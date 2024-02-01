@@ -1,0 +1,62 @@
+:root {
+    
+    /* Alert */
+    --danger:#FF5252;
+    --warning:#FFC107;
+    --info:#2196F3;
+    --success:#4CAF50;
+
+    /* Base */
+    --black: hsl(0, 0%, 0%);
+    --black-p05: hsl(0, 0%, 5%);
+    --black-p10: hsl(0, 0%, 10%);
+    --black-p20: hsl(0, 0%, 20%);
+    --white: hsl(0, 0%, 100%);
+    --white-p95: hsl(0, 0%, 95%);
+    --white-p90: hsl(0, 0%, 90%);
+    --white-p80: hsl(0, 0%, 80%);
+    
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body,
+button,
+input,
+textarea {
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+button,
+a {
+    font-weight: bolder;
+    box-sizing: border-box;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+span {
+    display: inline-block;
+}

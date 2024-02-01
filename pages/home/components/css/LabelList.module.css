@@ -1,0 +1,16 @@
+.labelsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+    gap: 8px;
+}
+
+.defaultLabelStyle {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background: var(--l1);
+    border-radius: 8px;
+    padding: 8px;
+}

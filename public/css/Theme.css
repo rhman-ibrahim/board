@@ -1,0 +1,26 @@
+body,
+body.dark {
+    --l0: var(--black);
+    --l1: var(--black-p05);
+    --l2: var(--black-p10);
+    --l3: var(--black-p20);
+    --lx: var(--white);
+}
+
+body.light {
+    --l0: var(--white);
+    --l1: var(--white-p95);
+    --l2: var(--white-p90);
+    --l3: var(--white-p80);
+    --lx: var(--black);
+}
+
+body {
+    background: var(--l0);
+    color: var(--lx);
+}
+
+body button,
+body a {
+    color: var(--lx);
+}

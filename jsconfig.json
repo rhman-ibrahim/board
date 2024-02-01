@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      // Update this paths to ./submodules/re
+      "@core/*":          ["./core/*"],
+      "@hooks/*":         ["./hooks/*"],
+      "@pages/*":         ["./pages/*"],
+      "@theme/*":         ["./theme/*"]
+    }
+  }
+}
