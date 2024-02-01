@@ -1,8 +1,8 @@
-import LabelList from "./components/LabelList";
+import LabelSection from "./components/LabelsSection";
 
 
 const Home = () => {
-    return <LabelList />
+    return <LabelSection />
 }
 
 export default Home;

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import wrappers from '@components/css/Wrapper.module.css';
-import style from './css/LabelList.module.css';
+import style from './css/LabelSection.module.css';
 import { motion } from 'framer-motion';
 import bridge from "@core/bridge";
 
 
-const LabelList = () => {
+const LabelsSection = () => {
 
     const [labels, setLabels]       = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -81,4 +81,4 @@ const LabelList = () => {
 }
 
 
-export default LabelList;
+export default LabelsSection;
