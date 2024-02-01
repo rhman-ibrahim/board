@@ -4,6 +4,7 @@
     "paths": {
       // Update this paths to ./submodules/re
       "@core/*":          ["./core/*"],
+      "@components/*":    ["./components/*"],
       "@hooks/*":         ["./hooks/*"],
       "@pages/*":         ["./pages/*"],
       "@theme/*":         ["./theme/*"]
