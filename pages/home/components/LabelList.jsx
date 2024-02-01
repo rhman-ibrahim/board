@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import wrappers from '@components/css/Wrapper.module.css';
 import style from './css/LabelList.module.css';
 import { motion } from 'framer-motion';
 import bridge from "@core/bridge";
@@ -8,6 +9,7 @@ const LabelList = () => {
 
     const [labels, setLabels]       = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [featuresCount, setCount] = useState(0);
     const [error, setError]         = useState(null);
     const KEY                       = import.meta.env.VITE_TRELLO_API_KEY;
     const TOKEN                     = import.meta.env.VITE_TRELLO_API_TOKEN;
@@ -20,6 +22,7 @@ const LabelList = () => {
                 try {
                     const response = await bridge.get(`labels?key=${KEY}&token=${TOKEN}`);
                     setLabels(response.data);
+                    setCount(response.data.reduce((total, label) => total + label.uses, 0));
                     setError(null);
                 } catch (error) {
                     setError(error)
@@ -46,26 +49,33 @@ const LabelList = () => {
     }
 
     return (
-        <>
-            <ul className={ style.labelsContainer }>
+        <section className={`${wrappers.defaultWrapper} ${style.labelsWrapper}`}>
+            <h1 className={ style.featuresHeading }>{ featuresCount } Features.</h1>
+            <ul className={ style.labelsWrapperUl }>
             {
                 labels.map(
                     label => {
                         return (
                             <motion.li
                                 key={ label.id }
-                                className={ style.defaultLabelStyle }
+                                className={ style.defaultLabel }
                                 whileHover={{ scale:1.2 }}
                             >
-                                <i className="material-symbols-outlined" style={{ color: label.color }}>label</i>
-                                <strong>{ label.name }</strong>
+                                <span>
+                                    <i className="material-symbols-outlined" style={{ color: label.color }}>label</i>
+                                    <strong>{ label.name }</strong>
+                                </span>
+                                <span>
+                                    <small>{ label.uses } feature/s</small>
+                                    <small>{ (label.uses / featuresCount).toFixed(2) * 100 }%</small>
+                                </span>
                             </motion.li>
                         );
                     }
                 )
             }
             </ul>
-        </>
+        </section>
     );
     
 }
