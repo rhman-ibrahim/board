@@ -1,0 +1,23 @@
+.defaultWrapper {
+    width: 100%;
+    padding: 16px;
+    margin: auto;
+}
+
+@media (width > 320px) {
+    .defaultWrapper {
+        max-width: 320px;
+    }
+}
+
+@media (width > 640px) {
+    .defaultWrapper {
+        max-width: 640px;
+    }
+}
+
+@media (width > 960px) {
+    .defaultWrapper {
+        max-width: 960px;
+    }
+}
