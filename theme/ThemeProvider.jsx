@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTheme, setDefaultTheme, setDarkTheme, setLightTheme } from '@theme/state/slice';
 
@@ -31,9 +31,9 @@ const ThemeProvider = () => {
                 <i className='material-symbols-outlined'>tune</i>
             </button>
             <button type='button' onClick={ applyDarkTheme }>
-                <i className='material-symbols-outlined'>dark_mode</i>
+                <i className='material-symbols-outlined' style={{ color: currentTheme == 'dark' ? 'var(--info)': null}}>dark_mode</i>
             </button>
-            <button type='button' onClick={ applyLightTheme }>
+            <button type='button' onClick={ applyLightTheme } style={{ color: currentTheme == 'light' ? 'var(--info)': null}}>
                 <i className='material-symbols-outlined'>light_mode</i>
             </button>
         </nav>
