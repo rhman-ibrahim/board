@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import wrappers from '@components/css/Wrapper.module.css';
+import style from '@components/css/SectionList.module.css';
 import { fetchLists } from "@api/lists";
+import { motion } from 'framer-motion';
 
 
 const ListsSection = () => {
@@ -24,13 +26,24 @@ const ListsSection = () => {
     }
 
     return (
-        <section className={ wrappers.defaultWrapper }>
-            <h2>{ count } Lists.</h2>
-            <ul>
+        <section className={`${wrappers.defaultWrapper} ${style.labelsWrapper}`}>
+            <h1 className={ style.counterHeading }>{ count } Lists.</h1>
+            <ul className={ style.listWrapper }>
                 {
                     lists.map(
                         list => {
-                            return <li key={ list.id }>{ list.name }</li>
+                            return (
+                                <motion.li
+                                    key={ list.id }
+                                    className={ style.defaultLi }
+                                    whileHover={{ scale:1.2 }}
+                                >
+                                    <span>
+                                        <i className="material-symbols-outlined">fact_check</i>
+                                        <strong>{ list.name }</strong>
+                                    </span>
+                                </motion.li>
+                            )
                         }
                     )
                 }
