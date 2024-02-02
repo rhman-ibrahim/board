@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import wrappers from '@components/css/Wrapper.module.css';
-import style from './css/LabelSection.module.css';
+import style from '@components/css/SectionList.module.css';
 import { fetchLabels } from "@api/labels";
 import { motion } from 'framer-motion';
 
@@ -27,15 +27,15 @@ const LabelsSection = () => {
 
     return (
         <section className={`${wrappers.defaultWrapper} ${style.labelsWrapper}`}>
-            <h1 className={ style.featuresHeading }>{ cards } Features.</h1>
-            <ul className={ style.labelsWrapperUl }>
+            <h1 className={ style.counterHeading }>{ cards } Features.</h1>
+            <ul className={ style.listWrapper }>
             {
                 labels.map(
                     label => {
                         return (
                             <motion.li
                                 key={ label.id }
-                                className={ style.defaultLabel }
+                                className={ style.defaultLi }
                                 whileHover={{ scale:1.2 }}
                             >
                                 <span>
