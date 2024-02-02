@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import cardsReducer from '@api/cards';
 import themeReducer from '@theme/state/slice';
 import labelsReducer from '@api/labels';
 import listsReducer from '@api/lists';
@@ -10,6 +11,7 @@ const store         = configureStore(
         reducer:
         {
             theme: themeReducer,
+            cards: cardsReducer,
             labels: labelsReducer,
             lists: listsReducer
         },
