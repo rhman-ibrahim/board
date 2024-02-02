@@ -1,11 +1,13 @@
-import LabelSection from "@components/LabelsSection";
-import ListsSection from "@components/ListsSection";
+import CardsView from "@components/CardsView";
+import LabelsView from "@components/LabelsView";
+import ListsView from "@components/ListsView";
 
 const Home = () => {
     return (
         <>
-            <LabelSection />
-            <ListsSection />
+            <CardsView />
+            <LabelsView />
+            <ListsView />
         </>
     )
 }
