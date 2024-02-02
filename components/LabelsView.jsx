@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 const LabelsView = () => {
 
     const dispatch = useDispatch();
-    const { labels, isLoading, count, cards, error } = useSelector((state) => state.labels);
+    const { labels, isLoading, count, error } = useSelector((state) => state.labels);
     
     useEffect(
         () => {
@@ -27,7 +27,7 @@ const LabelsView = () => {
 
     return (
         <section className={`${wrappers.defaultWrapper} ${style.labelsWrapper}`}>
-            <h1 className={ style.counterHeading }>{ cards } Labels.</h1>
+            <h1 className={ style.counterHeading }>{ count } Labels.</h1>
             <ul className={ style.listWrapper }>
             {
                 labels.map(
@@ -43,8 +43,7 @@ const LabelsView = () => {
                                     <strong>{ label.name }</strong>
                                 </span>
                                 <span>
-                                    <small>{ label.uses } feature/s</small>
-                                    <small>{ (label.uses / cards).toFixed(2) * 100 }%</small>
+                                    <small>{ label.uses } use/s</small>
                                 </span>
                             </motion.li>
                         );
