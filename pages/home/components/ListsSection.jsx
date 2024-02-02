@@ -1,39 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import wrappers from '@components/css/Wrapper.module.css';
-import bridge from "@core/bridge";
+import { fetchLists } from "@api/lists";
 
 
 const ListsSection = () => {
 
-    const [lists, setLists]         = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError]         = useState(null);
-    const KEY                       = import.meta.env.VITE_TRELLO_API_KEY;
-    const TOKEN                     = import.meta.env.VITE_TRELLO_API_TOKEN;
+    const dispatch = useDispatch();
+    const { lists, isLoading, count, error } = useSelector((state) => state.lists);
 
     useEffect(
         () => {
-            
-            const fetchLists = async () => {
-                setIsLoading(true);
-                try {
-                    const response = await bridge.get(`lists?key=${KEY}&token=${TOKEN}`);
-                    setLists(response.data);
-                    setError(null);
-                } catch (error) {
-                    setError(error)
-                } finally {
-                    setIsLoading(false);
-                }
-            }
-            
-            fetchLists();
-            
-            return () => {
-                // Cleanup tasks, if any
-            };
-
-        },[]
+            dispatch(fetchLists());
+        },[dispatch]
     )
 
     if (isLoading) {
@@ -46,12 +25,12 @@ const ListsSection = () => {
 
     return (
         <section className={ wrappers.defaultWrapper }>
-            <h2>{ lists.length } lists.</h2>
+            <h2>{ count } Lists.</h2>
             <ul>
                 {
                     lists.map(
                         list => {
-                            return <li>{ list.name }</li>
+                            return <li key={ list.id }>{ list.name }</li>
                         }
                     )
                 }
