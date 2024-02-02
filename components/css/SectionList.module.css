@@ -4,18 +4,18 @@
     gap: 8px;
 }
 
-.featuresHeading {
+.counterHeading {
     font-weight: 600;
     font-size: 18px;
 }
 
-.labelsWrapperUl {
+.listWrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 }
 
-.defaultLabel {
+.defaultLi {
     display: flex;
     cursor: pointer;
     align-items: center;
@@ -27,20 +27,20 @@
     padding: 12px;
 }
 
-.defaultLabel span {
+.defaultLi span {
     display: flex;
     width: 100%;
 }
 
-.defaultLabel span:first-child {
+.defaultLi span:first-child {
     align-items: center;
 }
 
-.defaultLabel span:last-child {
+.defaultLi span:last-child {
     justify-content: space-between;
     gap: 8px;
 }
 
-.defaultLabel span:last-child small {
+.defaultLi span:last-child small {
     font-size: 10px;
 }
