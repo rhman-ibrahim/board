@@ -7,6 +7,7 @@ const defineAlisConfig = () => {
   return {
     // Update this paths to ./submodules/re
     '@': path.resolve(__dirname,'.'),
+    '@api': path.resolve(__dirname,'./api'),
     '@core': path.resolve(__dirname,'./core'),
     '@components': path.resolve(__dirname,'./components'),
     '@hooks': path.resolve(__dirname,'./hooks'),

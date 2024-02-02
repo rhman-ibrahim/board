@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      // Update this paths to ./submodules/re
+      "@api/*":          ["./api/*"],
       "@core/*":          ["./core/*"],
       "@components/*":    ["./components/*"],
       "@hooks/*":         ["./hooks/*"],
