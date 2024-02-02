@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import wrappers from '@components/css/Wrapper.module.css';
-import style from '@components/css/SectionList.module.css';
+import style from '@components/css/ViewList.module.css';
 import { fetchLabels } from "@api/labels";
 import { motion } from 'framer-motion';
 
 
-const LabelsSection = () => {
+const LabelsView = () => {
 
     const dispatch = useDispatch();
     const { labels, isLoading, count, cards, error } = useSelector((state) => state.labels);
@@ -27,7 +27,7 @@ const LabelsSection = () => {
 
     return (
         <section className={`${wrappers.defaultWrapper} ${style.labelsWrapper}`}>
-            <h1 className={ style.counterHeading }>{ cards } Features.</h1>
+            <h1 className={ style.counterHeading }>{ cards } Labels.</h1>
             <ul className={ style.listWrapper }>
             {
                 labels.map(
@@ -58,4 +58,4 @@ const LabelsSection = () => {
 }
 
 
-export default LabelsSection;
+export default LabelsView;

@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import wrappers from '@components/css/Wrapper.module.css';
-import style from '@components/css/SectionList.module.css';
+import style from '@components/css/ViewList.module.css';
 import { fetchLists } from "@api/lists";
 import { motion } from 'framer-motion';
 
 
-const ListsSection = () => {
+const ListsView = () => {
 
     const dispatch = useDispatch();
     const { lists, isLoading, count, error } = useSelector((state) => state.lists);
@@ -53,4 +53,4 @@ const ListsSection = () => {
 
 }
 
-export default ListsSection;
+export default ListsView;
