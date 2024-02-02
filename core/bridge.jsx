@@ -44,4 +44,15 @@ bridge.interceptors.response.use(
     }
 );
 
+export const fetchData = async (endpoint, rejectWithValue) => {
+    try {
+        const KEY       = import.meta.env.VITE_TRELLO_API_KEY;
+        const TOKEN     = import.meta.env.VITE_TRELLO_API_TOKEN;
+        const response  = await bridge.get(`${endpoint}?key=${KEY}&token=${TOKEN}`);
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.message);
+    }
+};
+
 export default bridge;
