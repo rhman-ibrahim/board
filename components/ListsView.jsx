@@ -58,11 +58,14 @@ const ListsView = () => {
                                         }
                                     }
                                 >
-                                    <h2>{ list.name }</h2>
+                                    <h2>
+                                        <span>{ cards.filter(card => card.idList === list.id).length }/{ cards.length }</span>
+                                    </h2>
                                     <h3>
                                         <i className="material-symbols-outlined">{ glyphs[list.name].icon }</i>
-                                        <span>{ cards.filter(card => card.idList === list.id).length }</span>
+                                        <span>{ list.name }</span>
                                     </h3>
+                                    <p>{ glyphs[list.name].description }</p>
                                 </motion.div>
                             )
                         }
