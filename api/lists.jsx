@@ -1,12 +1,51 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchData } from '@core/bridge';
 
+const glyphs = {
+    "To Do": {
+        phase:1,
+        icon:"new_label",
+        background:"#ffc107",
+        color:"#000000"
+    },
+    "Doing": {
+        phase:2,
+        icon:"label",
+        background:"#2979ff",
+        color:"#ffffff"
+    },
+    "Done": {
+        phase:3,
+        icon:"all_match",
+        background:"#1c54b2",
+        color:"#ffffff"
+    },
+    "Tested": {
+        phase:4,
+        icon:"verified",
+        background:"#4caf50",
+        color:"#000000"
+    },
+    "Used In Projects": {
+        phase:5,
+        icon:"account_tree",
+        background:"#357a38",
+        color:"#ffffff",
+    },
+    "Issues": {
+        phase:6,
+        icon:"bug_report",
+        background:"#aa2e25",
+        color:"#ffffff"
+    }
+}
 
 const initialState = {
     lists: [],
     count: 0,
     isLoading: false,
     error: null,
+    glyphs: glyphs
 };
   
 export const fetchLists = createAsyncThunk(
