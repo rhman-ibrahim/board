@@ -89,6 +89,7 @@ const CardsView = () => {
                     <i className="material-icons">chevron_right</i>
                 </button>
             </nav>
+            <h1>{ count } Cards.</h1>
             <section className={ style.horizontalScroll } ref={ scrollContainerRef }>
                 {
                     cards.map(
@@ -102,7 +103,6 @@ const CardsView = () => {
                     )
                 }
             </section>
-            <h1>{ count } Cards.</h1>
         </section>
     )
 }

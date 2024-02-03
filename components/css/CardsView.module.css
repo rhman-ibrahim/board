@@ -4,8 +4,12 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: var(--l1);
     border-radius: 8px;
-    padding: 8px;
+    padding: 8px 12px;
     z-index: 2;
+}
+
+.defaultCard p {
+    line-height: 1.4;
 }
 
 .horizontalScroll {
