@@ -1,7 +1,18 @@
-.listsGrid {
+#listsWrapper {
     display: flex;
     flex-direction: column;
     padding: 16px;
+    gap: 8px;
+}
+
+#listsInfo h1 {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+#listsGrid {
+    display: flex;
+    flex-direction: column;
     gap: 8px;
 }
 
@@ -12,7 +23,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: var(--l0);
     border-radius: 8px;
     font-weight: 600;
@@ -32,17 +42,22 @@
 }
 
 @media (width >= 960px) {
-    .listsGrid {
+
+    #listsGrid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
+
     .defaultList {
         grid-column: span 1;
     }
+
 }
 
 @media (width >= 1280px) {
-    .listsGrid {
+
+    #listsGrid {
         grid-template-columns: repeat(3, 1fr);
     }
+    
 }

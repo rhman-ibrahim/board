@@ -29,8 +29,11 @@ const ListsView = () => {
     }
 
     return (
-        <section className={ wrappers.defaultWrapper }>
-            <div className={ style.listsGrid }>
+        <section id={ style.listsWrapper } className={ wrappers.defaultWrapper }>
+            <div id={ style.listsInfo }>
+                <h1>{ count } Phases.</h1>
+            </div>
+            <div id={ style.listsGrid }>
                 {
                     lists.map(
                         list => {
@@ -49,6 +52,7 @@ const ListsView = () => {
                                             outline: 'unset',
                                             scale: window.innerWidth >= 960 ? 1.5 : 1,
                                             background: glyphs[list.name].background,
+                                            boxShadow: `rgba(0, 0, 0, 0.24) 0px 3px 8px`,
                                             color: glyphs[list.name].color,
                                             zIndex: 3
                                         }
