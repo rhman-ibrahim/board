@@ -1,24 +1,23 @@
 .defaultWrapper {
     display: block;
-    padding: 16px;
     width: 100%;
 }
 
-@media (width >= 480px) {
+@media (width >= 640px) {
     .defaultWrapper {
-        max-width: 320px;
+        max-width: 480px;
         margin: auto;
     }
 }
 
-@media (width >= 720px) {
+@media (width >= 960px) {
     .defaultWrapper {
-        max-width: 480px;
+        max-width: 720px;
     }
 }
 
-@media (width >= 1080px) {
+@media (width >= 1280px) {
     .defaultWrapper {
-        max-width: 720px;
+        max-width: 960px;
     }
 }
