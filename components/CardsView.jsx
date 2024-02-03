@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import wrappers from '@components/css/Wrapper.module.css';
 import style from '@components/css/CardsView.module.css';
+import { fetchLists } from "@api/lists";
 import { fetchCards } from "@api/cards";
 
 
 const CardsView = () => {
 
     const dispatch                              = useDispatch();
+    const { lists }                             = useSelector((state) => state.lists);
     const { cards, isLoading, count, error }    = useSelector((state) => state.cards);
     const scrollContainerRef                    = useRef();
     const [canScrollLeft, setCanScrollLeft]     = useState(false);
@@ -52,6 +54,7 @@ const CardsView = () => {
     useEffect(
         () => {
             dispatch(fetchCards());
+            dispatch(fetchLists());
         },[dispatch]
     );
     
@@ -96,7 +99,11 @@ const CardsView = () => {
                         card => {
                             return (
                                 <div key={ card.id } className={ style.defaultCard }>
+                                    <h3>{ lists.filter(list => list.id === card.idList)[0].name }</h3>
                                     <p>{ card.name }</p>
+                                    <ul>
+                                        { card.labels.map(label => <li key={ label.id }>{ label.name }</li>) }
+                                    </ul>
                                 </div>
                             )
                         }

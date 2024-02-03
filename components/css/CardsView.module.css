@@ -1,15 +1,14 @@
-.defaultCard {
-    cursor: pointer;
-    position: relative;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background: var(--l1);
-    border-radius: 8px;
-    padding: 8px 12px;
-    z-index: 2;
+.horizontalScrollNav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
 }
 
-.defaultCard p {
-    line-height: 1.4;
+.scrollButton {
+    border-radius: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: var(--l0);
+    z-index: 2;
 }
 
 .horizontalScroll {
@@ -24,30 +23,35 @@
     padding: 16px;
     width: 100%;
     gap: 8px;
-  }
-    
+}
+
 .horizontalScroll::-webkit-scrollbar {
     display: none;
 }
 
-.horizontalScroll > .defaultCard {
+.defaultCard {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
-    flex: 0 0 240px;
-    z-index: 1;
+    flex: 0 0 240px; /* important for the .horizontalScroll */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: var(--l1);
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    z-index: 2;
+    gap: 8px;
 }
 
-.horizontalScrollNav {
+.defaultCard ul {
     display: flex;
-    justify-content: flex-end;
     gap: 4px;
 }
 
-.scrollButton {
-    border-radius: 100%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background: var(--l0);
-    z-index: 2;
+.defaultCard ul li {
+    font-size: 12px;
+}
+
+.defaultCard p {
+    line-height: 1.4;
 }
