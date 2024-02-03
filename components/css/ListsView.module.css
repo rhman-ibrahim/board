@@ -10,17 +10,37 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: var(--l1);
     border-radius: 8px;
+    font-weight: 600;
     padding: 16px;
     gap: 4px;
 }
 
 .defaultList h2 {
-    font-weight: 600;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .defaultList h3 {
-    font-size: 16px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    gap: 2px;
+}
+
+@media (width >= 960px) {
+    .listsGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .defaultList {
+        grid-column: span 1;
+    }
+}
+
+@media (width >= 1280px) {
+    .listsGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

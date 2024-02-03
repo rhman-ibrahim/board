@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import wrappers from '@components/css/Wrapper.module.css';
-import style from '@components/css/ViewList.module.css';
+import style from '@components/css/ListsView.module.css';
 import { fetchLists } from "@api/lists";
 import { fetchCards } from "@api/cards";
 import { motion } from 'framer-motion';
@@ -9,9 +9,9 @@ import { motion } from 'framer-motion';
 
 const ListsView = () => {
 
-    const dispatch                              = useDispatch();
-    const { cards }                             = useSelector((state) => state.cards);
-    const { lists, isLoading, count, error }    = useSelector((state) => state.lists);
+    const dispatch                                      = useDispatch();
+    const { cards }                                     = useSelector((state) => state.cards);
+    const { lists, isLoading, count, error, glyphs }    = useSelector((state) => state.lists);
 
     useEffect(
         () => {
@@ -29,31 +29,33 @@ const ListsView = () => {
     }
 
     return (
-        <section className={`${wrappers.defaultWrapper} ${style.labelsWrapper}`}>
-            <h1>{ count } Lists.</h1>
-            <ul className={ style.listWrapper }>
+        <section className={ wrappers.defaultWrapper }>
+            <div className={ style.listsGrid }>
                 {
                     lists.map(
                         list => {
                             return (
-                                <motion.li
-                                    key={ list.id }
-                                    className={ style.defaultLi }
-                                    whileHover={{ scale:1.2 }}
+                                <div
+                                    key         = { list.id }
+                                    className   = { style.defaultList }
+                                    style       = {
+                                        {
+                                            background: glyphs[list.name].background,
+                                            color: glyphs[list.name].color
+                                        }
+                                    }
                                 >
-                                    <span>
-                                        <i className="material-symbols-outlined">fact_check</i>
-                                        <strong>{ list.name }</strong>
-                                    </span>
-                                    <span>
-                                        <small>{ cards.filter(card => card.idList === list.id).length } card/s</small>
-                                    </span>
-                                </motion.li>
+                                    <h2>{ list.name }</h2>
+                                    <h3>
+                                        <i className="material-symbols-outlined">{ glyphs[list.name].icon }</i>
+                                        <span>{ cards.filter(card => card.idList === list.id).length }</span>
+                                    </h3>
+                                </div>
                             )
                         }
                     )
                 }
-            </ul>
+            </div>
         </section>
     )
 
