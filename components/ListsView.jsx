@@ -3,19 +3,22 @@ import { useSelector, useDispatch } from "react-redux";
 import wrappers from '@components/css/Wrapper.module.css';
 import style from '@components/css/ViewList.module.css';
 import { fetchLists } from "@api/lists";
+import { fetchCards } from "@api/cards";
 import { motion } from 'framer-motion';
 
 
 const ListsView = () => {
 
-    const dispatch = useDispatch();
-    const { lists, isLoading, count, error } = useSelector((state) => state.lists);
+    const dispatch                              = useDispatch();
+    const { cards }                             = useSelector((state) => state.cards);
+    const { lists, isLoading, count, error }    = useSelector((state) => state.lists);
 
     useEffect(
         () => {
             dispatch(fetchLists());
+            dispatch(fetchCards());
         },[dispatch]
-    )
+    );
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -41,6 +44,9 @@ const ListsView = () => {
                                     <span>
                                         <i className="material-symbols-outlined">fact_check</i>
                                         <strong>{ list.name }</strong>
+                                    </span>
+                                    <span>
+                                        <small>{ cards.filter(card => card.idList === list.id).length } card/s</small>
                                     </span>
                                 </motion.li>
                             )
