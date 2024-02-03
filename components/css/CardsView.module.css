@@ -1,0 +1,49 @@
+.defaultCard {
+    cursor: pointer;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: var(--l1);
+    border-radius: 8px;
+    padding: 8px;
+    z-index: 2;
+}
+
+.horizontalScroll {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    height: fit-content;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 16px;
+    width: 100%;
+    gap: 8px;
+  }
+    
+.horizontalScroll::-webkit-scrollbar {
+    display: none;
+}
+
+.horizontalScroll > .defaultCard {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    flex: 0 0 240px;
+    z-index: 1;
+}
+
+.horizontalScrollNav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+.scrollButton {
+    border-radius: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: var(--l0);
+    z-index: 2;
+}
