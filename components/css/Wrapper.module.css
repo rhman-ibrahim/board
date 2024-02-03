@@ -4,20 +4,20 @@
     width: 100%;
 }
 
-@media (width > 480px) {
+@media (width >= 480px) {
     .defaultWrapper {
         max-width: 320px;
         margin: auto;
     }
 }
 
-@media (width > 720px) {
+@media (width >= 720px) {
     .defaultWrapper {
         max-width: 480px;
     }
 }
 
-@media (width > 1080px) {
+@media (width >= 1080px) {
     .defaultWrapper {
         max-width: 720px;
     }
