@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchData } from '@core/bridge';
 
 const glyphs = {
-    "To Do": {
+    "Queue": {
         phase:1,
         icon:"new_label",
         background:"#ffc107",
@@ -26,13 +26,13 @@ const glyphs = {
         background:"#4caf50",
         color:"#000000"
     },
-    "Used In Projects": {
+    "Integrated": {
         phase:5,
         icon:"account_tree",
         background:"#357a38",
         color:"#ffffff",
     },
-    "Issues": {
+    "Bugs": {
         phase:6,
         icon:"bug_report",
         background:"#aa2e25",
