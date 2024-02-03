@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTheme, setDefaultTheme, setDarkTheme, setLightTheme } from '@theme/state/slice';
+import { selectTheme, setDefaultTheme, setDarkTheme, setLightTheme } from '@theme/slice';
 
 
 const ThemeProvider = () => {
