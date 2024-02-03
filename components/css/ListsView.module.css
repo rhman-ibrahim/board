@@ -7,11 +7,13 @@
 
 .defaultList {
     display: flex;
+    cursor: pointer;
+    position: static;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background: var(--l1);
+    background: var(--l0);
     border-radius: 8px;
     font-weight: 600;
     padding: 16px;

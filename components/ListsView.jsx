@@ -35,13 +35,22 @@ const ListsView = () => {
                     lists.map(
                         list => {
                             return (
-                                <div
+                                <motion.div
                                     key         = { list.id }
                                     className   = { style.defaultList }
                                     style       = {
                                         {
+                                            color: glyphs[list.name].background,
+                                            outline: `1px solid ${glyphs[list.name].background}`
+                                        }
+                                    }
+                                    whileHover={
+                                        {
+                                            outline: 'unset',
+                                            scale: window.innerWidth >= 960 ? 1.5 : 1,
                                             background: glyphs[list.name].background,
-                                            color: glyphs[list.name].color
+                                            color: glyphs[list.name].color,
+                                            zIndex: 3
                                         }
                                     }
                                 >
@@ -50,7 +59,7 @@ const ListsView = () => {
                                         <i className="material-symbols-outlined">{ glyphs[list.name].icon }</i>
                                         <span>{ cards.filter(card => card.idList === list.id).length }</span>
                                     </h3>
-                                </div>
+                                </motion.div>
                             )
                         }
                     )
