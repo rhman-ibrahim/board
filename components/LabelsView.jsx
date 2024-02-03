@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import wrappers from '@components/css/Wrapper.module.css';
-import style from '@components/css/ViewList.module.css';
+import style from '@components/css/LabelsView.module.css';
 import { fetchLabels } from "@api/labels";
 import { motion } from 'framer-motion';
 
@@ -26,16 +26,16 @@ const LabelsView = () => {
     }
 
     return (
-        <section className={`${wrappers.defaultWrapper} ${style.labelsWrapper}`}>
+        <section className={ wrappers.defaultWrapper }>
             <h1>{ count } Labels.</h1>
-            <ul className={ style.listWrapper }>
+            <ul className={ style.labelsWrapper }>
             {
                 labels.map(
                     label => {
                         return (
                             <motion.li
                                 key={ label.id }
-                                className={ style.defaultLi }
+                                className={ style.defaultLabel }
                                 whileHover={{ scale:1.2 }}
                             >
                                 <span>

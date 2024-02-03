@@ -1,0 +1,26 @@
+.listsGrid {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 8px;
+}
+
+.defaultList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--l1);
+    border-radius: 8px;
+    padding: 16px;
+    gap: 4px;
+}
+
+.defaultList h2 {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.defaultList h3 {
+    font-size: 16px;
+}
