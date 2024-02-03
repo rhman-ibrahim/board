@@ -4,36 +4,42 @@ import { fetchData } from '@core/bridge';
 const glyphs = {
     "Queue": {
         phase:1,
+        description:"This phase represents the next features to work on.",
         icon:"new_label",
         background:"#ffc107",
         color:"#000000"
     },
     "Doing": {
         phase:2,
+        description:"This phase represents features in progress.",
         icon:"label",
         background:"#2979ff",
         color:"#ffffff"
     },
     "Done": {
         phase:3,
+        description:"This phase represents completed features.",
         icon:"all_match",
         background:"#1c54b2",
         color:"#ffffff"
     },
     "Tested": {
         phase:4,
+        description:"This phase indicates that completed features have passed its tests successfully.",
         icon:"verified",
         background:"#4caf50",
         color:"#000000"
     },
     "Integrated": {
         phase:5,
+        description:"This phase represents features that have been implemented successfully in projects.",
         icon:"account_tree",
         background:"#357a38",
         color:"#ffffff",
     },
     "Bugs": {
         phase:6,
+        description:"This phase represents features that raise error/warning or do not function as supposed.",
         icon:"bug_report",
         background:"#aa2e25",
         color:"#ffffff"
