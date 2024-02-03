@@ -5,9 +5,9 @@ import ListsView from "@components/ListsView";
 const Home = () => {
     return (
         <>
+            <ListsView />
             <CardsView />
             <LabelsView />
-            <ListsView />
         </>
     )
 }
