@@ -27,7 +27,7 @@ const LabelsView = () => {
 
     return (
         <section className={`${wrappers.defaultWrapper} ${style.labelsWrapper}`}>
-            <h1 className={ style.counterHeading }>{ count } Labels.</h1>
+            <h1>{ count } Labels.</h1>
             <ul className={ style.listWrapper }>
             {
                 labels.map(

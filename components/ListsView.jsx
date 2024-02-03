@@ -27,7 +27,7 @@ const ListsView = () => {
 
     return (
         <section className={`${wrappers.defaultWrapper} ${style.labelsWrapper}`}>
-            <h1 className={ style.counterHeading }>{ count } Lists.</h1>
+            <h1>{ count } Lists.</h1>
             <ul className={ style.listWrapper }>
                 {
                     lists.map(
