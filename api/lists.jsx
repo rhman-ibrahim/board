@@ -6,7 +6,7 @@ const about = {
         phase:1,
         description:"This phase represents the next features to work on.",
         icon:"new_label",
-        background:"#ffc107",
+        background:"#ff9800",
         color:"#000000"
     },
     "Doing": {
