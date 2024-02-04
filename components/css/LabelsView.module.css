@@ -35,11 +35,17 @@
     align-items: center;
 }
 
+.defaultLabel:hover span:first-child i {
+    color: var(--lx) !important;
+}
+
 .defaultLabel span:last-child {
     justify-content: space-between;
     gap: 8px;
 }
 
+
 .defaultLabel span:last-child small {
     font-size: 10px;
+    font-weight: 600;
 }

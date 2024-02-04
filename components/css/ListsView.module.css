@@ -38,6 +38,10 @@
     gap: 2px;
 }
 
+.defaultList:hover h3 i {
+    color: var(--lx) !important;
+}
+
 .defaultList p {
     line-height: 1.2;
 }

@@ -38,7 +38,12 @@ const LabelsView = () => {
                             <motion.li
                                 key={ label.id }
                                 className={ style.defaultLabel }
-                                whileHover={{ scale:1.2 }}
+                                whileHover={
+                                    {
+                                        scale:1.4,
+                                        background: about[label.name].color
+                                    }
+                                }
                             >
                                 <span>
                                     <i

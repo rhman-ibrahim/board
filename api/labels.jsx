@@ -32,11 +32,11 @@ const about = {
     },
     "API": {
         icon:"api",
-        color:"#ffea00"
+        color:"#b28704"
     },
     "Web Sockets": {
         icon:"compare_arrows",
-        color:"#ffea00"
+        color:"#b28704"
     }
 }
 

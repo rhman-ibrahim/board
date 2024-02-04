@@ -31,7 +31,7 @@ const ListsView = () => {
     return (
         <section id={ style.listsWrapper } className={ wrappers.defaultWrapper }>
             <div id={ style.listsInfo }>
-                <h1>{ count } Phases.</h1>
+                <h1>{ count } Lists.</h1>
             </div>
             <div id={ style.listsGrid }>
                 {
@@ -43,14 +43,13 @@ const ListsView = () => {
                                     className   = { style.defaultList }
                                     style       = {
                                         {
-                                            color: about[list.name].background,
                                             outline: `1px solid ${about[list.name].background}`
                                         }
                                     }
                                     whileHover={
                                         {
                                             outline: 'unset',
-                                            scale: window.innerWidth >= 960 ? 1.5 : 1,
+                                            scale: window.innerWidth >= 960 ? 1.4 : 1,
                                             background: about[list.name].background,
                                             boxShadow: `rgba(0, 0, 0, 0.24) 0px 3px 8px`,
                                             color: about[list.name].color,
@@ -62,7 +61,7 @@ const ListsView = () => {
                                         <span>{ cards.filter(card => card.idList === list.id).length }/{ cards.length }</span>
                                     </h2>
                                     <h3>
-                                        <i className="material-symbols-outlined">{ about[list.name].icon }</i>
+                                        <i className="material-symbols-outlined" style={{ color: about[list.name].background }}>{ about[list.name].icon }</i>
                                         <span>{ list.name }</span>
                                     </h3>
                                     <p>{ about[list.name].description }</p>

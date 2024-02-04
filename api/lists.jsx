@@ -7,7 +7,7 @@ const about = {
         description:"This phase represents the next features to work on.",
         icon:"new_label",
         background:"#ff9800",
-        color:"#000000"
+        color:"#ffffff"
     },
     "Doing": {
         phase:2,
@@ -28,7 +28,7 @@ const about = {
         description:"This phase indicates that completed features have passed its tests successfully.",
         icon:"verified",
         background:"#4caf50",
-        color:"#000000"
+        color:"#ffffff"
     },
     "Integrated": {
         phase:5,
