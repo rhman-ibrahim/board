@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchData } from '@core/bridge';
 
-const glyphs = {
+const about = {
     "Queue": {
         phase:1,
         description:"This phase represents the next features to work on.",
@@ -51,7 +51,7 @@ const initialState = {
     count: 0,
     isLoading: false,
     error: null,
-    glyphs: glyphs
+    about: about
 };
   
 export const fetchLists = createAsyncThunk(

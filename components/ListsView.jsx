@@ -11,7 +11,7 @@ const ListsView = () => {
 
     const dispatch                                      = useDispatch();
     const { cards }                                     = useSelector((state) => state.cards);
-    const { lists, isLoading, count, error, glyphs }    = useSelector((state) => state.lists);
+    const { lists, isLoading, count, error, about }    = useSelector((state) => state.lists);
 
     useEffect(
         () => {
@@ -43,17 +43,17 @@ const ListsView = () => {
                                     className   = { style.defaultList }
                                     style       = {
                                         {
-                                            color: glyphs[list.name].background,
-                                            outline: `1px solid ${glyphs[list.name].background}`
+                                            color: about[list.name].background,
+                                            outline: `1px solid ${about[list.name].background}`
                                         }
                                     }
                                     whileHover={
                                         {
                                             outline: 'unset',
                                             scale: window.innerWidth >= 960 ? 1.5 : 1,
-                                            background: glyphs[list.name].background,
+                                            background: about[list.name].background,
                                             boxShadow: `rgba(0, 0, 0, 0.24) 0px 3px 8px`,
-                                            color: glyphs[list.name].color,
+                                            color: about[list.name].color,
                                             zIndex: 3
                                         }
                                     }
@@ -62,10 +62,10 @@ const ListsView = () => {
                                         <span>{ cards.filter(card => card.idList === list.id).length }/{ cards.length }</span>
                                     </h2>
                                     <h3>
-                                        <i className="material-symbols-outlined">{ glyphs[list.name].icon }</i>
+                                        <i className="material-symbols-outlined">{ about[list.name].icon }</i>
                                         <span>{ list.name }</span>
                                     </h3>
-                                    <p>{ glyphs[list.name].description }</p>
+                                    <p>{ about[list.name].description }</p>
                                 </motion.div>
                             )
                         }
