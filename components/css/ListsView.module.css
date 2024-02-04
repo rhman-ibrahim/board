@@ -21,13 +21,13 @@
     flex-direction: column;
     background: var(--l1);
     border-radius: 8px;
-    font-weight: 600;
     padding: 16px;
     gap: 4px;
 }
 
 .defaultList h2 {
     font-size: 24px;
+    font-weight: 600;
     text-align: right;
 }
 
