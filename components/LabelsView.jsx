@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 const LabelsView = () => {
 
     const dispatch = useDispatch();
-    const { labels, isLoading, count, error } = useSelector((state) => state.labels);
+    const { labels, isLoading, count, error, about } = useSelector((state) => state.labels);
     
     useEffect(
         () => {
@@ -41,7 +41,10 @@ const LabelsView = () => {
                                 whileHover={{ scale:1.2 }}
                             >
                                 <span>
-                                    <i className="material-symbols-outlined" style={{ color: label.color }}>label</i>
+                                    <i
+                                        className="material-symbols-outlined"
+                                        style={{ color: about[label.name].color || label.color }}
+                                    >{ about[label.name].icon || 'label' }</i>
                                     <strong>{ label.name }</strong>
                                 </span>
                                 <span>

@@ -1,12 +1,51 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchData } from '@core/bridge';
 
+const about = {
+    "Authentication": {
+        icon:"security",
+        color:"#357a38"
+    },
+    "Forms": {
+        icon:"edit_document",
+        color:"#ffc107"
+    },
+    "Time": {
+        icon:"schedule",
+        color:"#ffc107"
+    },
+    "Notifications": {
+        icon:"notifications",
+        color:"#f73378"
+    },
+    "Logging": {
+        icon:"history",
+        color:"#f73378"
+    },
+    "Language": {
+        icon:"translate",
+        color:"#2979ff"
+    },
+    "Theme": {
+        icon:"brightness_4",
+        color:"#2979ff"
+    },
+    "API": {
+        icon:"api",
+        color:"#ffea00"
+    },
+    "Web Sockets": {
+        icon:"compare_arrows",
+        color:"#ffea00"
+    }
+}
 
 const initialState = {
     labels: [],
     count: 0,
     isLoading: false,
     error: null,
+    about: about
 };
   
 export const fetchLabels = createAsyncThunk(
