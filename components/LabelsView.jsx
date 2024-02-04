@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 const LabelsView = () => {
 
     const dispatch = useDispatch();
-    const { labels, isLoading, count, error, about } = useSelector((state) => state.labels);
+    const { labels, totalUses, isLoading, count, error, about } = useSelector((state) => state.labels);
     
     useEffect(
         () => {
@@ -38,10 +38,15 @@ const LabelsView = () => {
                             <motion.li
                                 key={ label.id }
                                 className={ style.defaultLabel }
+                                style={
+                                    {
+                                        flex: Number(label.uses/totalUses),
+                                    }
+                                }
                                 whileHover={
                                     {
                                         scale:1.4,
-                                        background: about[label.name].color
+                                        background: about[label.name].color,
                                     }
                                 }
                             >

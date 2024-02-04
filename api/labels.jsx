@@ -34,7 +34,7 @@ const about = {
         icon:"api",
         color:"#b28704"
     },
-    "Web Sockets": {
+    "Channels": {
         icon:"compare_arrows",
         color:"#b28704"
     }
@@ -43,6 +43,7 @@ const about = {
 const initialState = {
     labels: [],
     count: 0,
+    totalUses: 0,
     isLoading: false,
     error: null,
     about: about
@@ -71,6 +72,7 @@ const labelsSlice = createSlice(
                     state.isLoading = false;
                     state.labels = action.payload;
                     state.count = action.payload.length;
+                    state.totalUses = action.payload.reduce((total, label) => total + label.uses, 0);
                 }
             )
         .addCase(
