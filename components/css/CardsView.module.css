@@ -42,14 +42,25 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    justify-content: space-between;
     flex: 0 0 240px; /* important for the .cardsScroll */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: var(--l1);
     border-radius: 8px;
-    padding: 8px 12px;
     cursor: pointer;
+    padding: 16px 8px;
     z-index: 2;
     gap: 8px;
+}
+
+.defaultCard h3 {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.defaultCard p {
+    line-height: 1.4;
 }
 
 .defaultCard ul {
@@ -59,8 +70,4 @@
 
 .defaultCard ul li {
     font-size: 12px;
-}
-
-.defaultCard p {
-    line-height: 1.4;
 }

@@ -9,7 +9,7 @@ import { fetchCards } from "@api/cards";
 const CardsView = () => {
 
     const dispatch                              = useDispatch();
-    const { lists }                             = useSelector((state) => state.lists);
+    const { lists, about }                      = useSelector((state) => state.lists);
     const { cards, isLoading, count, error }    = useSelector((state) => state.cards);
     const scrollContainerRef                    = useRef();
     const [canScrollLeft, setCanScrollLeft]     = useState(false);
@@ -99,9 +99,13 @@ const CardsView = () => {
                 {
                     cards.map(
                         card => {
+                            const cardListName = lists.filter(list => list.id === card.idList)[0].name;
                             return (
                                 <div key={ card.id } className={ style.defaultCard }>
-                                    <h3>{ lists.filter(list => list.id === card.idList)[0].name }</h3>
+                                    <h3>
+                                        <i className="material-symbols-outlined">{ about[cardListName].icon }</i>
+                                        <span>{ cardListName }</span>
+                                    </h3>
                                     <p>{ card.name }</p>
                                     <ul>
                                         { card.labels.map(label => <li key={ label.id }>{ label.name }</li>) }
