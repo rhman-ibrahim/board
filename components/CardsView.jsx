@@ -83,17 +83,19 @@ const CardsView = () => {
     }
 
     return (
-        <section className={ wrappers.defaultWrapper }>
-            <nav className={ style.horizontalScrollNav }>
-                <button className={ style.scrollButton } onClick={ scrollLeft } style={{ visibility: canScrollLeft ? 'visible':'hidden'}}>
+        <section id={ style.cardsWrapper } className={ wrappers.defaultWrapper }>
+            <div id={ style.cardsInfo }>
+                <h2>{ count } Cards.</h2>
+            </div>
+            <nav id={ style.cardsScrollNav }>
+                <button onClick={ scrollLeft } style={{ visibility: canScrollLeft ? 'visible':'hidden'}}>
                     <i className="material-icons">chevron_left</i>
                 </button>
-                <button className={ style.scrollButton } onClick={ scrollRight } style={{ visibility: canScrollRight ? 'visible':'hidden'}}>
+                <button onClick={ scrollRight } style={{ visibility: canScrollRight ? 'visible':'hidden'}}>
                     <i className="material-icons">chevron_right</i>
                 </button>
             </nav>
-            <h1>{ count } Cards.</h1>
-            <section className={ style.horizontalScroll } ref={ scrollContainerRef }>
+            <div id={ style.cardsScroll } ref={ scrollContainerRef }>
                 {
                     cards.map(
                         card => {
@@ -109,7 +111,7 @@ const CardsView = () => {
                         }
                     )
                 }
-            </section>
+            </div>
         </section>
     )
 }

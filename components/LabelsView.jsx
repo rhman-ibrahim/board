@@ -26,9 +26,11 @@ const LabelsView = () => {
     }
 
     return (
-        <section className={ wrappers.defaultWrapper }>
-            <h1>{ count } Labels.</h1>
-            <ul className={ style.labelsWrapper }>
+        <section id={ style.labelsWrapper } className={ wrappers.defaultWrapper }>
+            <div id={ style.labelsInfo }>
+                <h2>{ count } Labels.</h2>
+            </div>
+            <ul id={ style.labelsList }>
             {
                 labels.map(
                     label => {

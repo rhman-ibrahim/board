@@ -1,17 +1,26 @@
-.horizontalScrollNav {
+#cardsWrapper {
+    padding: 16px;
+}
+
+#cardsInfo h2 {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+#cardsScrollNav {
     display: flex;
     justify-content: flex-end;
     gap: 4px;
 }
 
-.scrollButton {
+#cardsScrollNav button {
     border-radius: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: var(--l0);
     z-index: 2;
 }
 
-.horizontalScroll {
+#cardsScroll {
     display: flex;
     position: static;
     flex-direction: row;
@@ -20,12 +29,12 @@
     height: fit-content;
     overflow-x: scroll;
     overflow-y: hidden;
-    padding: 16px;
+    padding: 16px 8px;
     width: 100%;
     gap: 8px;
 }
 
-.horizontalScroll::-webkit-scrollbar {
+#cardsScroll::-webkit-scrollbar {
     display: none;
 }
 
@@ -33,7 +42,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    flex: 0 0 240px; /* important for the .horizontalScroll */
+    flex: 0 0 240px; /* important for the .cardsScroll */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: var(--l1);
     border-radius: 8px;

@@ -1,6 +1,16 @@
-.labelsWrapper {
+#labelsWrapper {
+    padding: 16px;
+}
+
+#labelsInfo h2 {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#labelsList {
     display: flex;
     flex-wrap: wrap;
+    padding: 16px 8px;
     gap: 8px;
 }
 
