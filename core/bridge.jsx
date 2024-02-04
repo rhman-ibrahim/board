@@ -47,8 +47,7 @@ const GithubBridge = axios.create(
         timeout: 5000,
         baseURL:'https://api.github.com/repos/rhman-ibrahim/',
         headers: {
-            'Content-Type':'application/json',
-            'Authorization': import.meta.env.VITE_GITHUB_API_TOKEN
+            'Authorization': `Bearer ${import.meta.env.VITE_GITHUB_API_TOKEN}`
         },
     }
 );
@@ -72,6 +71,6 @@ export const fetchCommits = async endpoint => {
         const response  = await GithubBridge.get(`${endpoint}/commits`);
         return response.data;
     } catch (error) {
-        console.error(error);
+        console.error(error.message);
     }
 };
