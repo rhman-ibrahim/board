@@ -4,6 +4,7 @@ import wrappers from '@components/css/Wrapper.module.css';
 import style from '@components/css/CardsView.module.css';
 import { fetchLists } from "@api/lists";
 import { fetchCards } from "@api/cards";
+import { motion } from 'framer-motion';
 
 
 const CardsView = () => {
@@ -14,6 +15,9 @@ const CardsView = () => {
     const scrollContainerRef                    = useRef();
     const [canScrollLeft, setCanScrollLeft]     = useState(false);
     const [canScrollRight, setCanScrollRight]   = useState(true);
+    const [isDown, setIsDown] = useState(false);
+    const [startX, setStartX] = useState(null);
+    const [touchScroll, setTouchScroll] = useState(0);
 
     const handleScrollButtons = () => {
         if (scrollContainerRef.current) {
@@ -27,6 +31,24 @@ const CardsView = () => {
         const scrollAmount = event.deltaY || event.deltaX;
         scrollContainerRef.current.scrollLeft += scrollAmount;
         event.preventDefault();
+    };
+
+    const handleMouseDown = (e) => {
+        setIsDown(true);
+        setStartX(e.pageX - e.currentTarget.offsetLeft);
+        setTouchScroll(e.currentTarget.scrollLeft);
+    };
+
+    const handleMouseMove = (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - e.currentTarget.offsetLeft;
+        const walk = x - startX;
+        e.currentTarget.scrollLeft = touchScroll - walk;
+    };
+    
+    const handleMouseUp = () => {
+        setIsDown(false);
     };
 
     const scrollLeft = () => {
@@ -95,22 +117,36 @@ const CardsView = () => {
                     <i className="material-icons">chevron_right</i>
                 </button>
             </nav>
-            <div id={ style.cardsScroll } ref={ scrollContainerRef }>
+            <div
+                id              ={ style.cardsScroll }
+                ref             ={ scrollContainerRef }
+                onMouseDown     ={ handleMouseDown }
+                onMouseMove     ={ handleMouseMove }
+                onMouseUp       ={ handleMouseUp }
+                onMouseLeave    ={ handleMouseUp }
+            >
                 {
                     cards.map(
                         card => {
                             const cardListName = lists.filter(list => list.id === card.idList)[0].name;
                             return (
-                                <div key={ card.id } className={ style.defaultCard }>
+                                <motion.div
+                                    key={ card.id }
+                                    className={ style.defaultCard }
+                                    whileHover={{
+                                        background: about[cardListName].background,
+                                        color: about[cardListName].color
+                                    }}
+                                >
                                     <h3>
-                                        <i className="material-symbols-outlined">{ about[cardListName].icon }</i>
+                                        <i className="material-symbols-outlined" style={{ color:about[cardListName].background}}>{ about[cardListName].icon }</i>
                                         <span>{ cardListName }</span>
                                     </h3>
                                     <p>{ card.name }</p>
                                     <ul>
                                         { card.labels.map(label => <li key={ label.id }>{ label.name }</li>) }
                                     </ul>
-                                </div>
+                                </motion.div>
                             )
                         }
                     )

@@ -41,11 +41,12 @@
 .defaultCard {
     display: flex;
     flex-wrap: wrap;
+    user-select: none;
     flex-direction: column;
     justify-content: space-between;
     flex: 0 0 240px; /* important for the .cardsScroll */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background: var(--l1);
+    background: var(--l2);
     border-radius: 8px;
     cursor: pointer;
     padding: 16px 8px;
@@ -56,7 +57,21 @@
 .defaultCard h3 {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     font-weight: 600;
+}
+
+.defaultCard h3 span {
+    display: none;
+}
+
+.defaultCard:hover h3 i {
+    color: var(--lx) !important;
+    display: none;
+}
+
+.defaultCard:hover h3 span {
+    display: block;
 }
 
 .defaultCard p {
