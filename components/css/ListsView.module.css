@@ -19,7 +19,7 @@
     cursor: pointer;
     position: static;
     flex-direction: column;
-    background: var(--l0);
+    background: var(--l1);
     border-radius: 8px;
     font-weight: 600;
     padding: 16px;
