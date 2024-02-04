@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
+import wrapper from '@components/css/Wrapper.module.css';
+import style from '@components/css/CommitsView.module.css';
 import { Octokit } from "octokit";
+
 
 const CommitsView = () => {
 
@@ -17,9 +20,11 @@ const CommitsView = () => {
     useEffect(
         () => {
 
-            const octokit = new Octokit({ 
-                auth: import.meta.env.VITE_GITHUB_API_TOKEN,
-            });
+            const octokit = new Octokit(
+                { 
+                    auth: import.meta.env.VITE_GITHUB_API_TOKEN,
+                }
+            );
 
             const fetchAllCommits = async () => {
                 try {
@@ -63,24 +68,35 @@ const CommitsView = () => {
     if (error) {
         return <div>Error: {error}</div>;
     }
-
+//
     return (
-        <div>
-            <h1>Commits</h1>
-            <div>
-                {Object.entries(commits).map(([repo, commits]) => (
-                    <div key={repo}>
-                        <h2>{repo}</h2>
-                        <ul>
-                            {commits.map(commit => (
-                                <li key={commit.sha}>{commit.commit.message}</li>
-                            ))}
-                        </ul>
-                    </div>
-                ))}
+        <div id={ style.repositoriesWrapper } className={ wrapper.defaultWrapper }>
+            <div id={ style.commitsInfo }>
+                <h2>Commits</h2>
             </div>
+            {
+                Object.entries(commits).map(
+                    ([repo, commits]) => (
+                        <div key={repo} className={ style.commitsWrapper }>
+                            {
+                                commits.map(
+                                    commit => (
+                                        <ul key={commit.sha}>
+                                            <li>{ repo }</li>
+                                            <li>{commit.commit.message}</li>
+                                            <li>{commit.commit.author.date}</li>
+                                        </ul>
+                                    )
+                                )
+                            }
+                        </div>
+                    )
+                )
+            }
         </div>
     );
 };
 
 export default CommitsView;
+
+//

@@ -1,0 +1,22 @@
+#repositoriesWrapper {
+    padding: 16px;
+}
+
+#commitsInfo h2 {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.commitsWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 8px;
+}
+
+.commitsWrapper ul {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: var(--l1);
+    border-radius: 16px;
+    padding: 8px;
+}
