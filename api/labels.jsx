@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchData } from '@core/bridge';
+import { fetchBoard } from '@core/bridge';
 
 const about = {
     "Authentication": {
@@ -51,7 +51,7 @@ const initialState = {
   
 export const fetchLabels = createAsyncThunk(
     'labels/fetchLabels', async (_, { rejectWithValue }) => {
-        return fetchData('labels', rejectWithValue);
+        return fetchBoard('labels', rejectWithValue);
     }
 );
   

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchData } from '@core/bridge';
+import { fetchBoard } from '@core/bridge';
 
 
 const initialState = {
@@ -11,7 +11,7 @@ const initialState = {
   
 export const fetchCards = createAsyncThunk(
     'cards/fetchCards', async (_, { rejectWithValue }) => {
-        return fetchData('cards', rejectWithValue);
+        return fetchBoard('cards', rejectWithValue);
     }
 );
   
