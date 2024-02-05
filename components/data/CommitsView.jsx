@@ -97,7 +97,7 @@ const CommitsView = () => {
     }
 //
     return (
-        <div id={ style.repositoriesWrapper } className={ wrappers.defaultWrapper }>
+        <section id={ style.repositoriesWrapper } className={ wrappers.defaultWrapper } data-section="commits">
             <div className={ wrappers.viewInfo }>
                 <h1>
                     <i className="fa-brands fa-github"></i>
@@ -122,7 +122,7 @@ const CommitsView = () => {
                     )
                 }
             </div>
-        </div>
+        </section>
     );
 };
 

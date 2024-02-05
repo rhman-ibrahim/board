@@ -29,7 +29,7 @@ const ListsView = () => {
     }
 
     return (
-        <section id={ style.listsWrapper } className={ wrappers.defaultWrapper }>
+        <section id={ style.listsWrapper } className={ wrappers.defaultWrapper } data-section="lists">
             <div className={ wrappers.viewInfo }>
                 <h1>
                     <i className="fa-brands fa-trello"></i>

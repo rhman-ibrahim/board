@@ -26,7 +26,7 @@ const LabelsView = () => {
     }
 
     return (
-        <section id={ style.labelsWrapper } className={ wrappers.defaultWrapper }>
+        <section id={ style.labelsWrapper } className={ wrappers.defaultWrapper } data-section="labels">
             <div className={ wrappers.viewInfo }>
                 <h1>
                     <i className="fa-brands fa-trello"></i>

@@ -105,7 +105,7 @@ const CardsView = () => {
     }
 
     return (
-        <section id={ style.cardsWrapper } className={ wrappers.defaultWrapper }>
+        <section id={ style.cardsWrapper } className={ wrappers.defaultWrapper } data-section="cards">
             <div className={ wrappers.viewInfo }>
                 <h1>
                     <i className="fa-brands fa-trello"></i>
