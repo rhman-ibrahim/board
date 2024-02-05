@@ -1,9 +1,9 @@
-import CardsView from "@components/data/CardsView";
 import LabelsView from "@components/data/LabelsView";
 import ListsView from "@components/data/ListsView";
+import CardsView from "@components/data/CardsView";
 import CommitsView from "@components/data/CommitsView";
 
-1
+
 const Home = () => {
     return (
         <>
