@@ -3,19 +3,25 @@ import wrapper from '@components/css/Wrapper.module.css';
 import style from '@components/css/CommitsView.module.css';
 import { Octokit } from "octokit";
 
-
 const CommitsView = () => {
 
     const [isLoading, setIsLoading]     = useState(null);
     const [error, setError]             = useState(null);
+    const [history, setHistory]         = useState([]);
     const [commits, setCommits]         = useState(
         {
-            SCHPY: [],
-            SCHJS: [],
-            SCHSH: [],
-            SCHCF: [],
+            'sch-py': [],
+            'sch-js': [],
+            'sch-sh': [],
+            'sch-cf': []
         }
     );
+    const about = {
+        'sch-py': {icon:'fa-brands fa-python'},
+        'sch-js': {icon:'fa-brands fa-js'},
+        'sch-sh': {icon:'fa-solid fa-terminal'},
+        'sch-cf': {icon:'fa-solid fa-gears'}
+    }
 
     useEffect(
         () => {
@@ -61,6 +67,25 @@ const CommitsView = () => {
             fetchAllCommits();
     }, []);
 
+    useEffect(
+        () => {
+            const combined = [];
+            Object.entries(commits).forEach(([repo, commitsArray]) => {
+                commitsArray.forEach(commit => {
+                    combined.push(
+                        {
+                            repository: repo,
+                            message:    commit.commit.message,
+                            date:       commit.commit.author.date,
+                            id:         commit.sha
+                        }
+                    );
+                });
+            });
+            setHistory(combined.sort((a, b) => new Date(b.date) - new Date(a.date)));
+        },[commits]
+    )
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -72,27 +97,24 @@ const CommitsView = () => {
     return (
         <div id={ style.repositoriesWrapper } className={ wrapper.defaultWrapper }>
             <div id={ style.commitsInfo }>
-                <h2>Commits</h2>
+                <h2>
+                    <i className="fa-brands fa-github"></i>
+                    <span>Commits</span>
+                </h2>
             </div>
-            {
-                Object.entries(commits).map(
-                    ([repo, commits]) => (
-                        <div key={repo} className={ style.commitsWrapper }>
-                            {
-                                commits.map(
-                                    commit => (
-                                        <ul key={commit.sha}>
-                                            <li>{ repo }</li>
-                                            <li>{commit.commit.message}</li>
-                                            <li>{commit.commit.author.date}</li>
-                                        </ul>
-                                    )
-                                )
-                            }
-                        </div>
+            <div id={ style.commitsWrapper }>
+                {
+                    history.map(
+                        commit => (
+                            <ul key={commit.id}>
+                                <li className={ about[commit.repository].icon }></li>
+                                <li>{commit.message}</li>
+                                <li>{Math.round(((Date.now() - new Date(commit.date)) / 86_400_000))} days ago</li>
+                            </ul>
+                        )
                     )
-                )
-            }
+                }
+            </div>
         </div>
     );
 };
