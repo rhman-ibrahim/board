@@ -7,9 +7,9 @@ import CommitsView from "@components/CommitsView";
 const Home = () => {
     return (
         <>
+            <LabelsView />
             <ListsView />
             <CardsView />
-            <LabelsView />
             <CommitsView />
         </>
     )
