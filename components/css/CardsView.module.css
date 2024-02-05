@@ -2,11 +2,6 @@
     padding: 16px;
 }
 
-#cardsInfo h2 {
-    font-weight: 600;
-    font-size: 20px;
-}
-
 #cardsScrollNav {
     display: flex;
     justify-content: flex-end;

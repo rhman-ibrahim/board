@@ -2,11 +2,6 @@
     padding: 16px;
 }
 
-#commitsInfo h2 {
-    font-weight: 600;
-    font-size: 18px;
-}
-
 #commitsWrapper {
     display: flex;
     flex-direction: column;

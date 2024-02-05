@@ -2,11 +2,6 @@
     padding: 16px;
 }
 
-#listsInfo h1 {
-    font-weight: 600;
-    font-size: 24px;
-}
-
 #listsGrid {
     display: flex;
     flex-direction: column;
@@ -18,6 +13,7 @@
     display: flex;
     cursor: pointer;
     position: static;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     flex-direction: column;
     background: var(--l1);
     border-radius: 8px;
