@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import wrapper from '@components/css/Wrapper.module.css';
 import style from '@components/css/CommitsView.module.css';
 import { Octokit } from "octokit";
+import { motion } from 'framer-motion';
+
 
 const CommitsView = () => {
 
@@ -17,10 +19,10 @@ const CommitsView = () => {
         }
     );
     const about = {
-        'sch-py': {icon:'fa-brands fa-python'},
-        'sch-js': {icon:'fa-brands fa-js'},
-        'sch-sh': {icon:'fa-solid fa-terminal'},
-        'sch-cf': {icon:'fa-solid fa-gears'}
+        'sch-py': {icon:'fa-brands fa-python', color:'#00b0ff'},
+        'sch-js': {icon:'fa-brands fa-js', color:'#ffea00'},
+        'sch-sh': {icon:'fa-solid fa-cube', color:'#76ff03'},
+        'sch-cf': {icon:'fa-solid fa-file-code', color:'#d500f9'}
     }
 
     useEffect(
@@ -106,11 +108,11 @@ const CommitsView = () => {
                 {
                     history.map(
                         commit => (
-                            <ul key={commit.id}>
+                            <motion.ul key={commit.id} whileHover={{ background:about[commit.repository].color }}>
                                 <li className={ about[commit.repository].icon }></li>
                                 <li>{commit.message}</li>
                                 <li>{Math.round(((Date.now() - new Date(commit.date)) / 86_400_000))} days ago</li>
-                            </ul>
+                            </motion.ul>
                         )
                     )
                 }

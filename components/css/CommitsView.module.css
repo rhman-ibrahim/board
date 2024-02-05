@@ -15,8 +15,23 @@
 }
 
 #commitsWrapper ul {
+    cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: var(--l1);
     border-radius: 8px;
     padding: 16px;
+}
+
+#commitsWrapper ul li {
+    line-height: 1.4;
+}
+
+#commitsWrapper ul li:first-child {
+    display: block;
+    text-align: right;
+}
+
+#commitsWrapper ul li:not(:first-child) {
+    list-style: disc;
+    list-style-position: inside;
 }
