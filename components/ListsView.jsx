@@ -41,14 +41,8 @@ const ListsView = () => {
                                 <motion.div
                                     key         = { list.id }
                                     className   = { style.defaultList }
-                                    style       = {
-                                        {
-                                            outline: `1px solid ${about[list.name].background}`
-                                        }
-                                    }
                                     whileHover={
                                         {
-                                            outline: '1px solid transparent',
                                             scale: window.innerWidth >= 960 ? 1.4 : 1,
                                             background: about[list.name].background,
                                             boxShadow: `rgba(0, 0, 0, 0.24) 0px 3px 8px`,
