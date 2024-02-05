@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import wrapper from '@components/css/Wrapper.module.css';
+import wrappers from '@components/css/Wrapper.module.css';
 import style from '@components/css/CommitsView.module.css';
 import { Octokit } from "octokit";
 import { motion } from 'framer-motion';
@@ -97,12 +97,17 @@ const CommitsView = () => {
     }
 //
     return (
-        <div id={ style.repositoriesWrapper } className={ wrapper.defaultWrapper }>
-            <div id={ style.commitsInfo }>
-                <h2>
+        <div id={ style.repositoriesWrapper } className={ wrappers.defaultWrapper }>
+            <div className={ wrappers.viewInfo }>
+                <h1>
                     <i className="fa-brands fa-github"></i>
-                    <span>Commits</span>
+                    <i className="fa-solid fa-code-commit"></i>
+                </h1>
+                <h2>
+                    <span>{ history.length } Commits.</span>
                 </h2>
+                <p>A commit is a fundamental action that records changes to a repository's files. This project consists of { Object.keys(commits).length > 1 ? `${Object.keys(commits).length} repositories`:'1 repository' }.
+                Commits are ordered by time of creation.</p>
             </div>
             <div id={ style.commitsWrapper }>
                 {

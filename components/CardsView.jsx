@@ -106,8 +106,16 @@ const CardsView = () => {
 
     return (
         <section id={ style.cardsWrapper } className={ wrappers.defaultWrapper }>
-            <div id={ style.cardsInfo }>
-                <h2>{ count } Cards.</h2>
+            <div className={ wrappers.viewInfo }>
+                <h1>
+                    <i className="fa-brands fa-trello"></i>
+                    <i className="fa-solid fa-ticket"></i>
+                </h1>
+                <h2>
+                    <span>{ count } Cards.</span>
+                </h2>
+                <p>Each card repreesnts a feature or a task which may be addressing a single label (topic or feature) or multiple labels.
+                Cards are ordered by phases.</p>
             </div>
             <nav id={ style.cardsScrollNav }>
                 <button onClick={ scrollLeft } style={{ visibility: canScrollLeft ? 'visible':'hidden'}}>
@@ -155,5 +163,5 @@ const CardsView = () => {
         </section>
     )
 }
-
+11
 export default CardsView;

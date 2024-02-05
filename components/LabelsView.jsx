@@ -27,8 +27,16 @@ const LabelsView = () => {
 
     return (
         <section id={ style.labelsWrapper } className={ wrappers.defaultWrapper }>
-            <div id={ style.labelsInfo }>
-                <h2>{ count } Labels.</h2>
+            <div className={ wrappers.viewInfo }>
+                <h1>
+                    <i className="fa-brands fa-trello"></i>
+                    <i className="fa-solid fa-tags"></i>
+                </h1>
+                <h2>
+                    <span>{ count } Labels.</span>
+                </h2>
+                <p>Each label represents a topic or a feature that the project is addressing or working on.
+                The number of <strong>'uses'</strong> represents how many time a topic or a feature is mentioned.</p>
             </div>
             <ul id={ style.labelsList }>
             {

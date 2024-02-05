@@ -30,8 +30,16 @@ const ListsView = () => {
 
     return (
         <section id={ style.listsWrapper } className={ wrappers.defaultWrapper }>
-            <div id={ style.listsInfo }>
-                <h1>{ count } Lists.</h1>
+            <div className={ wrappers.viewInfo }>
+                <h1>
+                    <i className="fa-brands fa-trello"></i>
+                    <i className="fa-solid fa-clipboard"></i>
+                </h1>
+                <h2>
+                    <span>{ count } Lists.</span>
+                </h2>
+                <p>Each list represents a phase in the project, so the project consits of { count } phases,
+                and <strong>'X/Y'</strong> the number of cards in the phase to the total number of cards.</p>
             </div>
             <div id={ style.listsGrid }>
                 {
@@ -45,15 +53,12 @@ const ListsView = () => {
                                         {
                                             scale: window.innerWidth >= 960 ? 1.4 : 1,
                                             background: about[list.name].background,
-                                            boxShadow: `rgba(0, 0, 0, 0.24) 0px 3px 8px`,
                                             color: about[list.name].color,
                                             zIndex: 3
                                         }
                                     }
                                 >
-                                    <h2>
-                                        <span>{ cards.filter(card => card.idList === list.id).length }/{ cards.length }</span>
-                                    </h2>
+                                    <h2>{ cards.filter(card => card.idList === list.id).length }/{ cards.length }</h2>
                                     <h3>
                                         <i className="material-symbols-outlined" style={{ color: about[list.name].background }}>{ about[list.name].icon }</i>
                                         <span>{ list.name }</span>

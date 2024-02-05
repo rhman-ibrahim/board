@@ -25,7 +25,6 @@
 .viewInfo {
     display: flex;
     flex-direction: column;
-    font-weight: 600;
     gap: 4px;
 }
 
@@ -37,4 +36,13 @@
 
 .viewInfo h2 {
     font-size: 20px;
+}
+
+.viewInfo h1,
+.viewInfo h2 {
+    font-weight: 600;
+}
+
+.viewInfo p {
+    line-height: 1.4;
 }
