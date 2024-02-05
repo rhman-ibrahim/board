@@ -17,6 +17,10 @@
     padding: 16px;
 }
 
+#commitsWrapper ul:hover li:first-child {
+    color: var(--l0) !important;
+}
+
 #commitsWrapper ul li {
     line-height: 1.4;
 }
