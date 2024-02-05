@@ -15,7 +15,7 @@
     position: static;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     flex-direction: column;
-    background: var(--l1);
+    background: var(--l2);
     border-radius: 8px;
     padding: 16px;
     gap: 4px;
