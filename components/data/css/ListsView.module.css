@@ -9,7 +9,7 @@
     gap: 8px;
 }
 
-.defaultList {
+.list {
     display: flex;
     cursor: pointer;
     position: static;
@@ -21,44 +21,36 @@
     gap: 4px;
 }
 
-.defaultList h2 {
+.list h2 {
     font-size: 24px;
     font-weight: 600;
     text-align: right;
 }
 
-.defaultList h3 {
+.list h3 {
     display: flex;
     align-items: center;
     font-size: 20px;
     gap: 2px;
 }
 
-.defaultList:hover h3 i {
+.list:hover h3 i {
     color: var(--lx) !important;
 }
 
-.defaultList p {
+.list p {
     line-height: 1.2;
 }
 
-@media (width >= 960px) {
+@media (width >= 640px) {
 
     #listsGrid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .defaultList {
+    .list {
         grid-column: span 1;
-    }
-
-}
-
-@media (width >= 1280px) {
-
-    #listsGrid {
-        grid-template-columns: repeat(3, 1fr);
     }
 
 }

@@ -15,20 +15,20 @@ const Label = ({ total, about, data }) => {
         scale:1.4,
         background: about[data.name].color,
     };
-    const labelIconRules = {
+    const labelIconRules    = {
         color: about[data.name].color || data.color
     }
 
     return (
-        <motion.li className={ style.defaultLabel } style={ labelFlexRule } whileHover={ labelOnHoverRules }>
-            <span>
+        <motion.div className={ style.label } style={ labelFlexRule } whileHover={ labelOnHoverRules }>
+            <h2>
                 <i className="material-symbols-outlined" style={ labelIconRules }>{ about[data.name].icon || 'label' }</i>
                 <strong>{ data.name }</strong>
-            </span>
-            <span>
+            </h2>
+            <h3>
                 <small>{ data.uses } use/s</small>
-            </span>
-        </motion.li>
+            </h3>
+        </motion.div>
     );
 }
 
@@ -64,7 +64,7 @@ const LabelsView = () => {
                 <p>Each label represents a topic or a feature that the project is addressing or working on.
                 The number of <strong>'uses'</strong> represents how many time a topic or a feature is mentioned.</p>
             </div>
-            <ul id={ style.labelsList }>
+            <div id={ style.labelsList }>
             {
                 labels.map(
                     label => <Label
@@ -75,7 +75,7 @@ const LabelsView = () => {
                     />
                 )
             }
-            </ul>
+            </div>
         </section>
     );
     

@@ -15,12 +15,12 @@ const List = ({ listCards, totalCard, about, data }) => {
         color: about[data.name].color,
         zIndex: 3
     };
-    const listIconRules = {
+    const listIconRules    = {
         color: about[data.name].background
     };
 
     return (
-        <motion.div className={ style.defaultList } whileHover={ listOnHoverRules }>
+        <motion.div className={ style.list } whileHover={ listOnHoverRules }>
             <h2>{ listCards }/{ totalCard }</h2>
             <h3>
                 <i className="material-symbols-outlined" style={ listIconRules }>{ about[data.name].icon }</i>

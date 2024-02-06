@@ -5,15 +5,12 @@
 #labelsList {
     display: flex;
     flex-wrap: wrap;
-    padding: 16px 8px;
+    padding: 16px 0px;
     gap: 8px;
 }
 
-.defaultLabel {
-    display: flex;
+.label {
     cursor: pointer;
-    align-items: center;
-    flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: var(--l2);
     border-radius: 8px;
@@ -21,26 +18,17 @@
     padding: 12px;
 }
 
-.defaultLabel span {
-    display: flex;
-    width: 100%;
-}
 
-.defaultLabel span:first-child {
+.label h2 {
+    display: flex;
     align-items: center;
 }
 
-.defaultLabel:hover span:first-child i {
+.label:hover h2 i {
     color: var(--lx) !important;
 }
 
-.defaultLabel span:last-child {
-    justify-content: space-between;
-    gap: 8px;
-}
-
-
-.defaultLabel span:last-child small {
+.label h3 small {
     font-size: 10px;
     font-weight: 600;
 }
