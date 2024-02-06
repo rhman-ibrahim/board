@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import style from '@components/data/css/CommitsView.module.css';
 import master from '@components/data/css/Master.module.css';
 import { motion } from 'framer-motion';
@@ -33,6 +33,56 @@ const CommitsView = () => {
     const [repositories, setRepositories]   = useState({'sch-py': [], 'sch-js': [], 'sch-sh': [], 'sch-cf': []});
     const [history, setHistory]             = useState([]);
     
+    const scrollContainerRef                = useRef();
+    const [canScrollUp, setCanScrollUp]     = useState(false);
+    const [canScrollDown, setCanScrollDown] = useState(true);
+  
+    const handleButtonScroll = () => {
+        if (scrollContainerRef.current) {
+            const container = scrollContainerRef.current;
+            setCanScrollUp(container.scrollTop > 0);
+            setCanScrollDown(container.scrollTop !== (container.scrollHeight - container.clientHeight - 1));
+        }
+    };
+    const scrollUpButton = () => {
+        setCanScrollUp(
+            prevCanScrollUp => {
+                if (prevCanScrollUp) {
+                    scrollContainerRef.current.scrollTop -= scrollContainerRef.current.children[0].clientHeight * 4;
+                }
+                return prevCanScrollUp;
+            }
+        );
+    };
+    
+    const scrollDownButton = () => {
+        const container = scrollContainerRef.current;
+        console.log()
+        setCanScrollDown(
+            prevCanScrollDown => {
+                if (prevCanScrollDown) {
+                    scrollContainerRef.current.scrollTop += scrollContainerRef.current.children[0].clientHeight * 4;
+                }
+                return prevCanScrollDown;
+            }
+        );
+    };
+
+    useEffect(
+        () => {
+            const container = scrollContainerRef.current;
+            if (container) {
+                container.addEventListener('scroll', handleButtonScroll);
+                handleButtonScroll();
+            }
+            return () => {
+                if (container) {
+                    container.removeEventListener('scroll', handleButtonScroll);
+                }
+            }
+        },[handleButtonScroll]
+    )
+
     useEffect(
         () => {
             const octokit           = new Octokit({ auth: import.meta.env.VITE_GITHUB_API_TOKEN });
@@ -111,7 +161,15 @@ const CommitsView = () => {
                 This project consists of { Object.keys(repositories).length > 1 ? `${Object.keys(repositories).length}
                 repositories`:'1 repository' }. Commits are ordered by time of creation.</p>
             </div>
-            <div id={ style.commitsWrapper }>
+            <nav className={ master.scrollNav }>
+                <button onClick={ scrollUpButton } style={{ visibility: canScrollUp ? 'visible':'hidden'}}>
+                    <i className="material-icons">expand_less</i>
+                </button>
+                <button onClick={ scrollDownButton } style={{ visibility: canScrollDown ? 'visible':'hidden'}}>
+                    <i className="material-icons">expand_more</i>
+                </button>
+            </nav>
+            <div id={ style.commitsList } ref={ scrollContainerRef }>
                 { history.map( commit => <Commit key={ commit.id } data= { commit } /> ) }
             </div>
         </section>

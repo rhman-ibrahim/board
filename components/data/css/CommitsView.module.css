@@ -1,15 +1,24 @@
-#repositoriesWrapper {
+#repositoriesWrapper div:first-child {
     padding: 16px;
 }
 
-#commitsWrapper {
+#commitsList {
     display: flex;
     flex-direction: column;
-    padding: 16px 0px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 16px 8px;
+    height: 85vh;
     gap: 8px;
 }
 
-#commitsWrapper ul {
+#commitsList::-webkit-scrollbar {
+    display: none;
+}
+
+#commitsList ul {
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: var(--l2);
@@ -17,20 +26,20 @@
     padding: 16px;
 }
 
-#commitsWrapper ul:hover li:first-child {
+#commitsList ul:hover li:first-child {
     color: var(--l0) !important;
 }
 
-#commitsWrapper ul li {
+#commitsList ul li {
     line-height: 1.4;
 }
 
-#commitsWrapper ul li:first-child {
+#commitsList ul li:first-child {
     display: block;
     text-align: right;
 }
 
-#commitsWrapper ul li:not(:first-child) {
+#commitsList ul li:not(:first-child) {
     list-style: disc;
     list-style-position: inside;
 }
