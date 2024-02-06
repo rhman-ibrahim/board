@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 
-const defineAlisConfig = () => {
+const defineAliasConfig = () => {
   return {
     // Update this paths to ./submodules/re
     '@': path.resolve(__dirname,'.'),
@@ -17,9 +17,17 @@ const defineAlisConfig = () => {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: defineAlisConfig()
+export default defineConfig(
+  {
+    plugins: [react()],
+    resolve: {
+      alias: defineAliasConfig()
+    },
+    root: "./",
+    build: {
+      outDir: "dist",
+    },
+    base: "/",
+    publicDir: "public"
   }
-})
+)
