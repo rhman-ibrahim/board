@@ -3,31 +3,6 @@
     margin: auto;
 }
 
-.infoDivWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.infoDivWrapper h1 {
-    display: flex;
-    font-size: 24px;
-    gap: 8px;
-}
-
-.infoDivWrapper h2 {
-    font-size: 20px;
-}
-
-.infoDivWrapper h1,
-.infoDivWrapper h2 {
-    font-weight: 600;
-}
-
-.infoDivWrapper p {
-    line-height: 1.4;
-}
-
 @media (width > 960px) {
     
     #mainContainer {

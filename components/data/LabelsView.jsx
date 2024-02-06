@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import wrappers from '@components/css/Wrapper.module.css';
-import style from '@components/css/LabelsView.module.css';
+import master from '@components/data/css/Master.module.css';
+import style from '@components/data/css/LabelsView.module.css';
 import { fetchLabels } from "@api/labels";
 import { motion } from 'framer-motion';
 
@@ -27,7 +27,7 @@ const LabelsView = () => {
 
     return (
         <section id={ style.labelsWrapper } data-section="labels">
-            <div className={ wrappers.infoDivWrapper }>
+            <div className={ master.infoDiv }>
                 <h1>
                     <i className="fa-brands fa-trello"></i>
                     <i className="fa-solid fa-tags"></i>

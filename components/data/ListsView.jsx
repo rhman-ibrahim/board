@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import wrappers from '@components/css/Wrapper.module.css';
-import style from '@components/css/ListsView.module.css';
+import master from '@components/data/css/Master.module.css';
+import style from '@components/data/css/ListsView.module.css';
 import { fetchLists } from "@api/lists";
 import { fetchCards } from "@api/cards";
 import { motion } from 'framer-motion';
@@ -30,7 +30,7 @@ const ListsView = () => {
 
     return (
         <section id={ style.listsWrapper } data-section="lists">
-            <div className={ wrappers.infoDivWrapper }>
+            <div className={ master.infoDiv }>
                 <h1>
                     <i className="fa-brands fa-trello"></i>
                     <i className="fa-solid fa-clipboard"></i>

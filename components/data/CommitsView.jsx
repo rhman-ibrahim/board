@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import wrappers from '@components/css/Wrapper.module.css';
-import style from '@components/css/CommitsView.module.css';
+import master from '@components/data/css/Master.module.css';
+import style from '@components/data/css/CommitsView.module.css';
 import { Octokit } from "octokit";
 import { motion } from 'framer-motion';
 
@@ -98,7 +98,7 @@ const CommitsView = () => {
 //
     return (
         <section id={ style.repositoriesWrapper } data-section="commits">
-            <div className={ wrappers.infoDivWrapper }>
+            <div className={ master.infoDiv }>
                 <h1>
                     <i className="fa-brands fa-github"></i>
                     <i className="fa-solid fa-code-commit"></i>

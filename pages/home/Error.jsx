@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
-import wrappers from '@components/css/Wrapper.module.css';
-import style from '@components/css/ErrorView.module.css';
+import wrappers from '@pages/home/css/Wrapper.module.css';
+import style from '@pages/home/css/ErrorView.module.css';
 
 
 const Error = () => {

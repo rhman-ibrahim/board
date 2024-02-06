@@ -1,0 +1,24 @@
+.infoDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.infoDiv h1 {
+    display: flex;
+    font-size: 24px;
+    gap: 8px;
+}
+
+.infoDiv h2 {
+    font-size: 20px;
+}
+
+.infoDiv h1,
+.infoDiv h2 {
+    font-weight: 600;
+}
+
+.infoDiv p {
+    line-height: 1.4;
+}
