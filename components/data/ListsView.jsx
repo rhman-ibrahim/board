@@ -1,17 +1,41 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import master from '@components/data/css/Master.module.css';
 import style from '@components/data/css/ListsView.module.css';
+import master from '@components/data/css/Master.module.css';
 import { fetchLists } from "@api/lists";
 import { fetchCards } from "@api/cards";
 import { motion } from 'framer-motion';
 
 
+const List = ({ listCards, totalCard, about, data }) => {
+
+    const listOnHoverRules = {
+        scale: window.innerWidth >= 960 ? 1.4 : 1,
+        background: about[data.name].background,
+        color: about[data.name].color,
+        zIndex: 3
+    };
+    const listIconRules = {
+        color: about[data.name].background
+    };
+
+    return (
+        <motion.div className={ style.defaultList } whileHover={ listOnHoverRules }>
+            <h2>{ listCards }/{ totalCard }</h2>
+            <h3>
+                <i className="material-symbols-outlined" style={ listIconRules }>{ about[data.name].icon }</i>
+                <span>{ data.name }</span>
+            </h3>
+            <p>{ about[data.name].description }</p>
+        </motion.div>
+    )
+}
+
 const ListsView = () => {
 
-    const dispatch                                      = useDispatch();
-    const { cards }                                     = useSelector((state) => state.cards);
-    const { lists, isLoading, count, error, about }    = useSelector((state) => state.lists);
+    const dispatch                                  = useDispatch();
+    const { cards }                                 = useSelector((state) => state.cards);
+    const { lists, isLoading, count, error, about } = useSelector((state) => state.lists);
 
     useEffect(
         () => {
@@ -44,35 +68,18 @@ const ListsView = () => {
             <div id={ style.listsGrid }>
                 {
                     lists.map(
-                        list => {
-                            return (
-                                <motion.div
-                                    key         = { list.id }
-                                    className   = { style.defaultList }
-                                    whileHover={
-                                        {
-                                            scale: window.innerWidth >= 960 ? 1.4 : 1,
-                                            background: about[list.name].background,
-                                            color: about[list.name].color,
-                                            zIndex: 3
-                                        }
-                                    }
-                                >
-                                    <h2>{ cards.filter(card => card.idList === list.id).length }/{ cards.length }</h2>
-                                    <h3>
-                                        <i className="material-symbols-outlined" style={{ color: about[list.name].background }}>{ about[list.name].icon }</i>
-                                        <span>{ list.name }</span>
-                                    </h3>
-                                    <p>{ about[list.name].description }</p>
-                                </motion.div>
-                            )
-                        }
+                        list => <List
+                            key         = { list.id }
+                            data        = { list } 
+                            listCards   = { cards.filter(card => card.idList === list.id).length }
+                            totalCard   = { cards.length }
+                            about       = { about }
+                        />
                     )
                 }
             </div>
         </section>
     )
-
 }
 
 export default ListsView;

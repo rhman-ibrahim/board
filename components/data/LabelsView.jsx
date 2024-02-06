@@ -1,10 +1,36 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import master from '@components/data/css/Master.module.css';
 import style from '@components/data/css/LabelsView.module.css';
+import master from '@components/data/css/Master.module.css';
 import { fetchLabels } from "@api/labels";
 import { motion } from 'framer-motion';
 
+
+const Label = ({ total, about, data }) => {
+    
+    const labelFlexRule     = {
+        flex: Number(data.uses/total),
+    };
+    const labelOnHoverRules = {
+        scale:1.4,
+        background: about[data.name].color,
+    };
+    const labelIconRules = {
+        color: about[data.name].color || data.color
+    }
+
+    return (
+        <motion.li className={ style.defaultLabel } style={ labelFlexRule } whileHover={ labelOnHoverRules }>
+            <span>
+                <i className="material-symbols-outlined" style={ labelIconRules }>{ about[data.name].icon || 'label' }</i>
+                <strong>{ data.name }</strong>
+            </span>
+            <span>
+                <small>{ data.uses } use/s</small>
+            </span>
+        </motion.li>
+    );
+}
 
 const LabelsView = () => {
 
@@ -41,36 +67,12 @@ const LabelsView = () => {
             <ul id={ style.labelsList }>
             {
                 labels.map(
-                    label => {
-                        return (
-                            <motion.li
-                                key={ label.id }
-                                className={ style.defaultLabel }
-                                style={
-                                    {
-                                        flex: Number(label.uses/totalUses),
-                                    }
-                                }
-                                whileHover={
-                                    {
-                                        scale:1.4,
-                                        background: about[label.name].color,
-                                    }
-                                }
-                            >
-                                <span>
-                                    <i
-                                        className="material-symbols-outlined"
-                                        style={{ color: about[label.name].color || label.color }}
-                                    >{ about[label.name].icon || 'label' }</i>
-                                    <strong>{ label.name }</strong>
-                                </span>
-                                <span>
-                                    <small>{ label.uses } use/s</small>
-                                </span>
-                            </motion.li>
-                        );
-                    }
+                    label => <Label
+                        key     = { label.id }
+                        data    = { label }
+                        about   = { about }
+                        total   = { totalUses }
+                    />
                 )
             }
             </ul>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import master from '@components/data/css/Master.module.css';
 import style from '@components/data/css/CommitsView.module.css';
+import master from '@components/data/css/Master.module.css';
 import { motion } from 'framer-motion';
 import { Octokit } from "octokit";
 
@@ -28,30 +28,16 @@ const Commit = ({ data }) => {
 
 const CommitsView = () => {
 
-    const [isLoading, setIsLoading]                 = useState(null);
-    const [error, setError]                         = useState(null);
-    const [history, setHistory]                     = useState([]);
-    const [repositories, setRepositories]           = useState(
-        {
-            'sch-py': [],
-            'sch-js': [],
-            'sch-sh': [],
-            'sch-cf': []
-        }
-    );
+    const [isLoading, setIsLoading]         = useState(null);
+    const [error, setError]                 = useState(null);
+    const [repositories, setRepositories]   = useState({'sch-py': [], 'sch-js': [], 'sch-sh': [], 'sch-cf': []});
+    const [history, setHistory]             = useState([]);
     
     useEffect(
         () => {
-
-            const octokit = new Octokit(
-                { 
-                    auth: import.meta.env.VITE_GITHUB_API_TOKEN,
-                }
-            );
-
-            const fetchAllCommits = async () => {
+            const octokit           = new Octokit({ auth: import.meta.env.VITE_GITHUB_API_TOKEN });
+            const fetchAllCommits   = async () => {
                 try {
-
                     const responses = await Promise.all(
                         [
                             octokit.request('GET /repos/rhman-ibrahim/sch-py/commits'),
@@ -60,7 +46,6 @@ const CommitsView = () => {
                             octokit.request('GET /repos/rhman-ibrahim/sch-cf/commits')
                         ]
                     );
-
                     responses.map(
                         (response, index) => {
                         if (response.status === 200) {
@@ -76,13 +61,10 @@ const CommitsView = () => {
                             setError(`Error fetching commits for repository ${Object.keys(repositories)[index]}`);
                         }
                     });
-
                 } catch (error) {
                     setError('Error fetching commits');
-
                 } finally {
                     setIsLoading(false);
-
                 }
             };
             fetchAllCommits();
@@ -130,7 +112,7 @@ const CommitsView = () => {
                 repositories`:'1 repository' }. Commits are ordered by time of creation.</p>
             </div>
             <div id={ style.commitsWrapper }>
-                { history.map( commit => <Commit key={ commit.id } data= { commit } />) }
+                { history.map( commit => <Commit key={ commit.id } data= { commit } /> ) }
             </div>
         </section>
     );

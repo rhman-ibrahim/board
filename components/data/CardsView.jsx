@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import master from '@components/data/css/Master.module.css';
 import style from '@components/data/css/CardsView.module.css';
+import master from '@components/data/css/Master.module.css';
 import { fetchLists } from "@api/lists";
 import { fetchCards } from "@api/cards";
 import { motion } from 'framer-motion';
@@ -9,12 +9,12 @@ import { motion } from 'framer-motion';
 
 const Card = ({ listName, about, data }) => {
 
-    const cardIconRules     = {
-        color: about[listName].background
-    };
     const cardOnHoverRules  = {
         background: about[listName].background,
         color: about[listName].color
+    };
+    const cardIconRules     = {
+        color: about[listName].background
     };
 
     return (
