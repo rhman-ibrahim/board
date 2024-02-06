@@ -33,7 +33,7 @@
     display: none;
 }
 
-.defaultCard {
+.Card {
     display: flex;
     user-select: none;
     flex-direction: column;
@@ -48,35 +48,35 @@
     gap: 8px;
 }
 
-.defaultCard h3 {
+.Card h3 {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     font-weight: 600;
 }
 
-.defaultCard h3 span {
+.Card h3 span {
     display: none;
 }
 
-.defaultCard:hover h3 i {
+.Card:hover h3 i {
     color: var(--lx) !important;
     display: none;
 }
 
-.defaultCard:hover h3 span {
+.Card:hover h3 span {
     display: block;
 }
 
-.defaultCard p {
+.Card p {
     line-height: 1.4;
 }
 
-.defaultCard ul {
+.Card ul {
     display: flex;
     gap: 4px;
 }
 
-.defaultCard ul li {
+.Card ul li {
     font-size: 12px;
 }

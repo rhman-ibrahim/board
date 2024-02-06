@@ -7,51 +7,75 @@ import { fetchCards } from "@api/cards";
 import { motion } from 'framer-motion';
 
 
+const Card = ({ listName, about, card }) => {
+
+    const cardIconRules     = {
+        color: about[listName].background
+    };
+    const cardOnHoverRules  = {
+        background: about[listName].background,
+        color: about[listName].color
+    };
+
+    return (
+        <motion.div className={ style.Card } whileHover={cardOnHoverRules}>
+            <h3>
+                <i className="material-symbols-outlined" style={ cardIconRules }>{ about[listName].icon }</i>
+                <span>{ listName }</span>
+            </h3>
+            <p>{ card.name }</p>
+            <ul>
+                { card.labels.map(label => <li key={ label.id }>{ label.name }</li>) }
+            </ul>
+        </motion.div>
+    )
+}
+
 const CardsView = () => {
 
     const dispatch                              = useDispatch();
-    const { lists, about }                      = useSelector((state) => state.lists);
     const { cards, isLoading, count, error }    = useSelector((state) => state.cards);
+    const { lists, about }                      = useSelector((state) => state.lists);
+
     const scrollContainerRef                    = useRef();
+    // Handling buttons scroll.
     const [canScrollLeft, setCanScrollLeft]     = useState(false);
     const [canScrollRight, setCanScrollRight]   = useState(true);
-    const [isDown, setIsDown] = useState(false);
-    const [startX, setStartX] = useState(null);
-    const [touchScroll, setTouchScroll] = useState(0);
+    // Handling touch scroll.
+    const [isDown, setIsDown]                   = useState(false);
+    const [startX, setStartX]                   = useState(null);
+    const [touchScroll, setTouchScroll]         = useState(0);
 
-    const handleScrollButtons = () => {
-        if (scrollContainerRef.current) {
-            const container = scrollContainerRef.current;
-            setCanScrollLeft(container.scrollLeft > 0);
-            setCanScrollRight(container.scrollLeft < (container.scrollWidth - container.clientWidth));
-        }
-    };
-
-    const handleWheel = event => {
-        const scrollAmount = event.deltaY || event.deltaX;
-        scrollContainerRef.current.scrollLeft += scrollAmount;
-        event.preventDefault();
-    };
 
     const handleMouseDown = (e) => {
         setIsDown(true);
         setStartX(e.pageX - e.currentTarget.offsetLeft);
         setTouchScroll(e.currentTarget.scrollLeft);
     };
-
-    const handleMouseMove = (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - e.currentTarget.offsetLeft;
-        const walk = x - startX;
-        e.currentTarget.scrollLeft = touchScroll - walk;
-    };
-    
     const handleMouseUp = () => {
         setIsDown(false);
     };
+    const handleMouseMove = (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x                                 = e.pageX - e.currentTarget.offsetLeft;
+        const walk                              = x - startX;
+        e.currentTarget.scrollLeft              = touchScroll - walk;
+    };
+    const handleWheelScroll = event => {
+        const scrollAmount                      = event.deltaY || event.deltaX;
+        scrollContainerRef.current.scrollLeft  += scrollAmount;
+        event.preventDefault();
+    };
 
-    const scrollLeft = () => {
+    const HandleButtonScroll = () => {
+        if (scrollContainerRef.current) {
+            const container = scrollContainerRef.current;
+            setCanScrollLeft(container.scrollLeft > 0);
+            setCanScrollRight(container.scrollLeft < (container.scrollWidth - container.clientWidth));
+        }
+    };
+    const scrollLeftButton = () => {
         setCanScrollLeft(
             (prevCanScrollLeft) => {
                 if (prevCanScrollLeft) {
@@ -61,8 +85,7 @@ const CardsView = () => {
             }
         );
     };
-
-    const scrollRight = () => {
+    const scrollRightButton = () => {
         setCanScrollRight(
             (prevCanScrollRight) => {
                 if (prevCanScrollRight) {
@@ -84,16 +107,16 @@ const CardsView = () => {
         () => {
             const container = scrollContainerRef.current;
             if (container) {
-                container.addEventListener('scroll', handleScrollButtons);
-                container.addEventListener('wheel', handleWheel);
+                container.addEventListener('scroll', HandleButtonScroll);
+                container.addEventListener('wheel', handleWheelScroll);
             }
             return () => {
                 if (container) {
-                    container.removeEventListener('scroll', handleScrollButtons);
-                    container.removeEventListener('wheel', handleWheel);
+                    container.removeEventListener('scroll', HandleButtonScroll);
+                    container.removeEventListener('wheel', handleWheelScroll);
                 }
             };
-        },[handleScrollButtons, handleWheel]
+        },[HandleButtonScroll, handleWheelScroll]
     )
     
     if (isLoading) {
@@ -114,54 +137,37 @@ const CardsView = () => {
                 <h2>
                     <span>{ count } Cards.</span>
                 </h2>
-                <p>Each card repreesnts a feature or a task which may be addressing a single label (topic or feature) or multiple labels.
-                Cards are ordered by phases.</p>
+                <p>Each card repreesnts a feature or a task which may be addressing a single label
+                (topic or feature) or multiple labels. Cards are ordered by phases.</p>
             </div>
             <nav id={ style.cardsScrollNav }>
-                <button onClick={ scrollLeft } style={{ visibility: canScrollLeft ? 'visible':'hidden'}}>
+                <button onClick={ scrollLeftButton } style={{ visibility: canScrollLeft ? 'visible':'hidden'}}>
                     <i className="material-icons">chevron_left</i>
                 </button>
-                <button onClick={ scrollRight } style={{ visibility: canScrollRight ? 'visible':'hidden'}}>
+                <button onClick={ scrollRightButton } style={{ visibility: canScrollRight ? 'visible':'hidden'}}>
                     <i className="material-icons">chevron_right</i>
                 </button>
             </nav>
             <div
-                id              ={ style.cardsScroll }
-                ref             ={ scrollContainerRef }
-                onMouseDown     ={ handleMouseDown }
-                onMouseMove     ={ handleMouseMove }
-                onMouseUp       ={ handleMouseUp }
-                onMouseLeave    ={ handleMouseUp }
+                id              = { style.cardsScroll }
+                ref             = { scrollContainerRef }
+                onMouseDown     = { handleMouseDown }
+                onMouseMove     = { handleMouseMove }
+                onMouseUp       = { handleMouseUp }
+                onMouseLeave    = { handleMouseUp }
             >
                 {
                     cards.map(
-                        card => {
-                            const cardListName = lists.filter(list => list.id === card.idList)[0].name;
-                            return (
-                                <motion.div
-                                    key={ card.id }
-                                    className={ style.defaultCard }
-                                    whileHover={{
-                                        background: about[cardListName].background,
-                                        color: about[cardListName].color
-                                    }}
-                                >
-                                    <h3>
-                                        <i className="material-symbols-outlined" style={{ color:about[cardListName].background}}>{ about[cardListName].icon }</i>
-                                        <span>{ cardListName }</span>
-                                    </h3>
-                                    <p>{ card.name }</p>
-                                    <ul>
-                                        { card.labels.map(label => <li key={ label.id }>{ label.name }</li>) }
-                                    </ul>
-                                </motion.div>
-                            )
-                        }
+                        card => <Card
+                            listName    = { lists.filter(list => list.id === card.idList)[0].name }
+                            about       = { about }
+                            card        = { card }
+                        />
                     )
                 }
             </div>
         </section>
     )
 }
-11
+
 export default CardsView;
