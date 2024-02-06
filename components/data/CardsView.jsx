@@ -140,7 +140,7 @@ const CardsView = () => {
                 <p>Each card repreesnts a feature or a task which may be addressing a single label
                 (topic or feature) or multiple labels. Cards are ordered by phases.</p>
             </div>
-            <nav id={ style.cardsScrollNav }>
+            <nav className={ master.scrollNav }>
                 <button onClick={ scrollLeftButton } style={{ visibility: canScrollLeft ? 'visible':'hidden'}}>
                     <i className="material-icons">chevron_left</i>
                 </button>
@@ -149,7 +149,7 @@ const CardsView = () => {
                 </button>
             </nav>
             <div
-                id              = { style.cardsScroll }
+                id              = { style.cardsList }
                 ref             = { scrollContainerRef }
                 onMouseDown     = { handleMouseDown }
                 onMouseMove     = { handleMouseMove }

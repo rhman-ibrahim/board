@@ -2,20 +2,7 @@
     padding: 16px;
 }
 
-#cardsScrollNav {
-    display: flex;
-    justify-content: flex-end;
-    gap: 4px;
-}
-
-#cardsScrollNav button {
-    border-radius: 100%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background: var(--l0);
-    z-index: 2;
-}
-
-#cardsScroll {
+#cardsList {
     display: flex;
     position: static;
     flex-direction: row;
@@ -29,7 +16,7 @@
     gap: 8px;
 }
 
-#cardsScroll::-webkit-scrollbar {
+#cardsList::-webkit-scrollbar {
     display: none;
 }
 
@@ -38,7 +25,7 @@
     user-select: none;
     flex-direction: column;
     justify-content: space-between;
-    flex: 0 0 240px; /* important for the .cardsScroll */
+    flex: 0 0 240px; /* important for the .cardsList */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: var(--l2);
     border-radius: 8px;

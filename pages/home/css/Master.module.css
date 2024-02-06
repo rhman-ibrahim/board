@@ -3,7 +3,7 @@
     margin: auto;
 }
 
-@media (width > 960px) {
+@media (width >= 960px) {
     
     #mainContainer {
         display: grid;

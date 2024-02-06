@@ -65,7 +65,7 @@ const ListsView = () => {
                 <p>Each list represents a phase in the project, so the project consits of { count } phases,
                 and <strong>'X/Y'</strong> the number of cards in the phase to the total number of cards.</p>
             </div>
-            <div id={ style.listsGrid }>
+            <div id={ style.listsList }>
                 {
                     lists.map(
                         list => <List
