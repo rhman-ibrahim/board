@@ -6,7 +6,7 @@ import style from '@components/css/Header.module.css';
 const Header = () => {
     return (
         <header className={ style.Header }>
-            <section className={`${ wrappers.defaultWrapper } ${ style.HeaderWrapper }`}>
+            <section className={ style.HeaderWrapper }>
                 <div>
                     <NavLink to="/">
                         <i className='material-icons'>home</i>

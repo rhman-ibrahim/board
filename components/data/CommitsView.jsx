@@ -97,8 +97,8 @@ const CommitsView = () => {
     }
 //
     return (
-        <section id={ style.repositoriesWrapper } className={ wrappers.defaultWrapper } data-section="commits">
-            <div className={ wrappers.viewInfo }>
+        <section id={ style.repositoriesWrapper } data-section="commits">
+            <div className={ wrappers.infoDivWrapper }>
                 <h1>
                     <i className="fa-brands fa-github"></i>
                     <i className="fa-solid fa-code-commit"></i>

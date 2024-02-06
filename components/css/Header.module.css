@@ -6,6 +6,8 @@
 .HeaderWrapper {
     display: flex;
     flex-direction: column;
+    max-width: 960px;
+    margin: auto;
     gap: 16px;
 }
 

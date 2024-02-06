@@ -26,8 +26,8 @@ const LabelsView = () => {
     }
 
     return (
-        <section id={ style.labelsWrapper } className={ wrappers.defaultWrapper } data-section="labels">
-            <div className={ wrappers.viewInfo }>
+        <section id={ style.labelsWrapper } data-section="labels">
+            <div className={ wrappers.infoDivWrapper }>
                 <h1>
                     <i className="fa-brands fa-trello"></i>
                     <i className="fa-solid fa-tags"></i>

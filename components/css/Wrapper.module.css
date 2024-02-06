@@ -1,31 +1,46 @@
-.defaultWrapper {
-    width: 100%;
+#mainContainer {
     max-width: 960px;
-    display: block;
     margin: auto;
 }
 
-.viewInfo {
+.infoDivWrapper {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
-.viewInfo h1 {
+.infoDivWrapper h1 {
     display: flex;
     font-size: 24px;
     gap: 8px;
 }
 
-.viewInfo h2 {
+.infoDivWrapper h2 {
     font-size: 20px;
 }
 
-.viewInfo h1,
-.viewInfo h2 {
+.infoDivWrapper h1,
+.infoDivWrapper h2 {
     font-weight: 600;
 }
 
-.viewInfo p {
+.infoDivWrapper p {
     line-height: 1.4;
+}
+
+@media (width > 960px) {
+    
+    #mainContainer {
+        display: grid;
+        grid-template-columns: repeat(3,320px);
+    }
+
+    #mainContainer div:first-child {
+        grid-column: span 2;
+    }
+
+    #mainContainer div:last-child {
+        grid-column: span 1;
+    }
+
 }

@@ -35,7 +35,6 @@
 
 .defaultCard {
     display: flex;
-    flex-wrap: wrap;
     user-select: none;
     flex-direction: column;
     justify-content: space-between;

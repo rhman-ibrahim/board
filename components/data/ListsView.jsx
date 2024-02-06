@@ -29,8 +29,8 @@ const ListsView = () => {
     }
 
     return (
-        <section id={ style.listsWrapper } className={ wrappers.defaultWrapper } data-section="lists">
-            <div className={ wrappers.viewInfo }>
+        <section id={ style.listsWrapper } data-section="lists">
+            <div className={ wrappers.infoDivWrapper }>
                 <h1>
                     <i className="fa-brands fa-trello"></i>
                     <i className="fa-solid fa-clipboard"></i>
