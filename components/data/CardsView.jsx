@@ -159,6 +159,7 @@ const CardsView = () => {
                 {
                     cards.map(
                         card => <Card
+                            key         = { card.id }
                             listName    = { lists.filter(list => list.id === card.idList)[0].name }
                             about       = { about }
                             card        = { card }
