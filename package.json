@@ -22,6 +22,7 @@
     "react-router-dom": "^6.21.2",
     "redux": "^5.0.0",
     "reselect": "^5.0.1",
+    "spa-http-server": "^0.9.0",
     "timeago.js": "^4.0.0-beta.3"
   },
   "devDependencies": {
