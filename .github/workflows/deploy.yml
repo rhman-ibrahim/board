@@ -1,4 +1,3 @@
-# Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
 
 on:
@@ -47,6 +46,9 @@ jobs:
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
+        with:
+          # Configure the source directory for GitHub Pages
+          source: './dist'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
@@ -55,3 +57,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+        with:
+          # Deploy files from the dist directory
+          path: './dist'
