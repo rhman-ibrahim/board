@@ -7,7 +7,7 @@ import { fetchCards } from "@api/cards";
 import { motion } from 'framer-motion';
 
 
-const Card = ({ listName, about, card }) => {
+const Card = ({ listName, about, data }) => {
 
     const cardIconRules     = {
         color: about[listName].background
@@ -23,9 +23,9 @@ const Card = ({ listName, about, card }) => {
                 <i className="material-symbols-outlined" style={ cardIconRules }>{ about[listName].icon }</i>
                 <span>{ listName }</span>
             </h3>
-            <p>{ card.name }</p>
+            <p>{ data.name }</p>
             <ul>
-                { card.labels.map(label => <li key={ label.id }>{ label.name }</li>) }
+                { data.labels.map(label => <li key={ label.id }>{ label.name }</li>) }
             </ul>
         </motion.div>
     )
@@ -162,7 +162,7 @@ const CardsView = () => {
                             key         = { card.id }
                             listName    = { lists.filter(list => list.id === card.idList)[0].name }
                             about       = { about }
-                            card        = { card }
+                            data        = { card }
                         />
                     )
                 }
