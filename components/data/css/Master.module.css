@@ -22,3 +22,17 @@
 .infoDiv p {
     line-height: 1.4;
 }
+
+.scrollNav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px;
+    gap: 4px;
+}
+
+.scrollNav button {
+    border-radius: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: var(--l0);
+    z-index: 2;
+}
